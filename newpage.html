@@ -16,6 +16,16 @@
             color: #444;
             background-color: #f0f7ff;
         }
+        /* 滚动淡入基础样式 */
+        .fade-item{
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+        .fade-item.active{
+            opacity: 1;
+            transform: translateY(0);
+        }
         /* 顶部导航栏 */
         nav {
             background-color: #87CEEB;
@@ -215,8 +225,8 @@
         <p>记录平凡日子里的细碎美好</p>
     </div>
 </div>
-<!--介绍板块-->
-<section class="intro">
+<!--介绍板块，添加fade-item类-->
+<section class="intro fade-item">
     <h2>关于生活小记</h2>
     <div class="intro-row">
         <div class="intro-img">
@@ -229,8 +239,8 @@
         </div>
     </div>
 </section>
-<!--生活感悟底色板块-->
-<section class="life-feel">
+<!--生活感悟底色板块，添加fade-item类-->
+<section class="life-feel fade-item">
     <div class="feel-wrap">
         <div class="feel-left">
             <h3>人间烟火</h3>
@@ -248,8 +258,8 @@
         </div>
     </div>
 </section>
-<!--生活碎片四卡片-->
-<section class="fragment">
+<!--生活碎片板块，添加fade-item类-->
+<section class="fragment fade-item">
     <h2>生活碎片</h2>
     <div class="card-box">
         <div class="card">
@@ -284,5 +294,22 @@
 </section>
 <!--底部版权-->
 <footer>©2026 日常生活小记 保留所有权利</footer>
+
+<!--滚动淡入JS代码，放在body末尾-->
+<script>
+const fadeItems = document.querySelectorAll('.fade-item');
+function checkFade(){
+    fadeItems.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        //元素进入视口1/4位置就触发动画
+        if(itemTop < windowHeight * 0.75){
+            item.classList.add('active');
+        }
+    })
+}
+window.addEventListener('scroll', checkFade);
+window.addEventListener('load', checkFade);
+</script>
 </body>
 </html>
