@@ -17,9 +17,9 @@
             max-width: 1100px;
             margin: 0 auto;
             padding-top: 140px;
-            padding-left:24px;
-            padding-right:24px;
-            padding-bottom:30px;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-bottom: 30px;
             line-height: 1.8;
         }
 
@@ -28,31 +28,15 @@
             position: fixed;
             top: 0;
             left: 0;
-            width:100%;
-            z-index:998;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
+            width: 100%;
+            z-index: 998;
+            text-align: center;
             background: rgba(255, 255, 255, 0.9);
             border-bottom: 1px solid #b9d8f5;
-            padding:12px 10px;
+            padding: 12px 10px;
             box-shadow: 0 3px 12px rgba(52, 142, 224, 0.15);
         }
-        .nav-music-btn{
-            background: linear-gradient(135deg, #348de0, #256bbf);
-            color: #fff;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .nav-music-btn:hover{
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(37, 107, 191, 0.35);
-        }
+
         .nav a {
             color: #256bbf;
             font-size: 17px;
@@ -61,43 +45,71 @@
             text-decoration: none;
             transition: color 0.2s ease;
         }
+
         .nav a:hover {
             color: #0f4a8f;
             text-decoration: underline;
         }
 
-        /* ==========左上角圆形社团logo ========== */
-        .logo-wrap {
+        /* ========== 左上角独立音频播放控件 ========== */
+        .audio-player {
             position: fixed;
-            top: 58px;
+            top: 70px;
             left: 14px;
             z-index: 9999;
-        }
-        #clubLogo {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #fff;
-            box-shadow: 0 4px 14px rgba(37, 107, 191, 0.35);
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        #clubLogo:hover {
-            transform: translateY(-4px) scale(1.08);
-            box-shadow: 0 8px 20px rgba(37, 107, 191, 0.45);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid #dceeff;
+            border-radius: 999px;
+            padding: 8px 14px;
+            box-shadow: 0 4px 14px rgba(52, 141, 224, 0.2);
+            font-size: 14px;
+            color: #1f3450;
         }
 
-        /* ==========首页顶部大图（headimg.jpg）========== */
-        .top-img-wrap{
-            width:100%;
-            margin-bottom:30px;
+        .audio-player button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #348de0, #256bbf);
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(37, 107, 191, 0.35);
         }
-        .top-img-wrap img{
-            width:100%;
-            border-radius:16px;
-            box-shadow:0 8px 22px rgba(52,141,224,0.2);
-            display:block;
+
+        .audio-player button:hover {
+            transform: scale(1.08);
+        }
+
+        .audio-player span {
+            min-width: 36px;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .audio-player input[type="range"] {
+            width: 160px;
+            cursor: pointer;
+        }
+
+        /* ========== 首页顶部大图 ========== */
+        .top-img-wrap {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .top-img-wrap img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 22px rgba(52, 141, 224, 0.2);
+            display: block;
         }
 
         /* 节奏装饰线 */
@@ -109,6 +121,7 @@
             animation: beatMove 2.4s linear infinite;
             margin: 10px 0 30px;
         }
+
         @keyframes beatMove {
             0% { background-position: 0% 0; }
             100% { background-position: 200% 0; }
@@ -123,6 +136,7 @@
             margin-bottom: 40px;
             box-shadow: 0 10px 24px rgba(52, 141, 224, 0.1);
         }
+
         h2 {
             color: #1f6fbf;
             margin-bottom: 16px;
@@ -130,67 +144,74 @@
             display: flex;
             align-items: center;
         }
+
         h2::before {
             content: "🥁";
             margin-right: 10px;
         }
 
-        /* =====风采展示网格===== */
-        .gallery-box{
-            display:grid;
-            grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-            gap:18px;
-            margin:12px 0 20px;
+        /* ===== 风采展示网格 ===== */
+        .gallery-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin: 12px 0 20px;
         }
-        .gallery-item img{
-            width:100%;
-            border-radius:14px;
-            border:3px solid #fff;
-            box-shadow:0 10px 24px rgba(52,141,224,0.2);
+
+        .gallery-item img {
+            width: 100%;
+            border-radius: 14px;
+            border: 3px solid #fff;
+            box-shadow: 0 10px 24px rgba(52, 141, 224, 0.2);
             transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
+
         .gallery-item img:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 18px 34px rgba(31, 111, 191, 0.35);
         }
-        .pic-desc{
-            margin-top:8px;
-            text-align:center;
-            font-size:14px;
-            color:#4a7ba6;
-            line-height:1.6;
+
+        .pic-desc {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 14px;
+            color: #4a7ba6;
+            line-height: 1.6;
         }
 
         /* 表格 */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top:12px;
+            margin-top: 12px;
         }
+
         th, td {
             border: 1px solid #aed6ff;
-            padding:12px;
-            text-align:center;
+            padding: 12px;
+            text-align: center;
         }
+
         th {
             background: linear-gradient(90deg, #348de0, #5aa9f0);
-            color:#fff;
+            color: #fff;
         }
+
         tr:nth-child(even) {
             background: #e8f4ff;
         }
-        /* 鼠标悬停行加深 */
+
         tbody tr:hover {
             background-color: #cbe7ff;
         }
 
         /* 视频 */
         video {
-            margin-top:16px;
-            border-radius:14px;
-            border:3px solid #fff;
-            box-shadow:0 10px 24px rgba(52,141,224,0.2);
-            max-width:100%;
+            margin-top: 16px;
+            border-radius: 14px;
+            border: 3px solid #fff;
+            box-shadow: 0 10px 24px rgba(52, 141, 224, 0.2);
+            max-width: 100%;
         }
 
         /* 表单 */
@@ -198,36 +219,39 @@
         select,
         textarea {
             background: #fff;
-            border:1px solid #8fc3f7;
-            border-radius:8px;
-            padding:8px 10px;
-            color:#1f3450;
-            outline:none;
+            border: 1px solid #8fc3f7;
+            border-radius: 8px;
+            padding: 8px 10px;
+            color: #1f3450;
+            outline: none;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
+
         input[type="text"]:focus,
         select:focus,
         textarea:focus {
-            border-color:#348de0;
-            box-shadow:0 0 0 3px rgba(52,141,224,0.15);
+            border-color: #348de0;
+            box-shadow: 0 0 0 3px rgba(52, 141, 224, 0.15);
         }
+
         textarea {
-            width:340px;
-            height:110px;
+            width: 340px;
+            height: 110px;
         }
 
         input[type="submit"],
         input[type="reset"] {
             background: linear-gradient(135deg, #348de0, #256bbf);
-            color:#fff;
-            border:none;
-            padding:9px 18px;
-            border-radius:22px;
-            cursor:pointer;
-            font-weight:bold;
-            box-shadow:0 6px 14px rgba(37,107,191,0.3);
+            color: #fff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 22px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 6px 14px rgba(37, 107, 191, 0.3);
             transition: transform 0.2s ease;
         }
+
         input[type="submit"]:hover,
         input[type="reset"]:hover {
             transform: translateY(-2px);
@@ -235,26 +259,23 @@
 
         /* 返回顶部 */
         .back-top {
-            margin-top:24px;
+            margin-top: 24px;
         }
+
         .back-top a {
-            color:#256bbf;
-            font-weight:bold;
-            text-decoration:none;
+            color: #256bbf;
+            font-weight: bold;
+            text-decoration: none;
         }
+
         .back-top a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body id="top">
-    <audio id="bgAudio" src="bg.mp3" loop>
-    <!-- ==========固定导航栏【左边加入音乐按钮】========== -->
+    <!-- ========== 固定顶部导航栏 ========== -->
     <div class="nav">
-        <button class="nav-music-btn" id="musicBtn">
-            <span id="musicIcon">▶️</span>
-            <span id="musicText">播放音乐</span>
-        </button>
         <a href="#intro">社团简介</a> |
         <a href="#activity">活动安排</a> |
         <a href="#show">风采展示</a> |
@@ -262,9 +283,15 @@
         <a href="#apply">在线报名</a>
     </div>
 
-    <!-- 左上角社团logo  -->
-    <div class="logo-wrap">
-        <img id="clubLogo" src="logo.jpg" alt="打击乐社标志">
+    <!-- ========== 左上角独立音频播放控件 ========== -->
+    <div class="audio-player">
+        <button id="musicBtn">
+            <span id="musicIcon">▶</span>
+        </button>
+        <span id="currentTime">0:00</span>
+        <input type="range" id="progressBar" value="0" min="0" max="100" step="0.1">
+        <span id="duration">0:00</span>
+        <audio id="bgAudio" src="bg.mp3" loop preload="metadata"></audio>
     </div>
 
     <!-- 首页顶部大图 -->
@@ -285,7 +312,7 @@
         <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
-    <!-- 活动安排【第三列前两行合并单元格】 -->
+    <!-- 活动安排 -->
     <section id="activity">
         <h2>活动安排</h2>
         <table>
@@ -329,7 +356,7 @@
         <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
-    <!-- 风采展示（每张图带单独介绍） -->
+    <!-- 风采展示 -->
     <section id="show">
         <h2>风采展示</h2>
         <div class="gallery-box">
@@ -461,23 +488,43 @@
 <script>
     const bgAudio = document.getElementById("bgAudio");
     const musicIcon = document.getElementById("musicIcon");
-    const musicText = document.getElementById("musicText");
     const musicBtn = document.getElementById("musicBtn");
-    const clubLogo = document.getElementById("clubLogo");
+    const progressBar = document.getElementById("progressBar");
+    const currentTime = document.getElementById("currentTime");
+    const duration = document.getElementById("duration");
+
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return "0:00";
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        return m + ":" + (s < 10 ? "0" : "") + s;
+    }
 
     function toggleMusic() {
         if (bgAudio.paused) {
             bgAudio.play();
-            musicIcon.textContent = "⏸️";
-            musicText.textContent = "暂停音乐";
+            musicIcon.textContent = "⏸";
         } else {
             bgAudio.pause();
-            musicIcon.textContent = "▶️";
-            musicText.textContent = "播放音乐";
+            musicIcon.textContent = "▶";
         }
     }
+
     musicBtn.addEventListener("click", toggleMusic);
-    clubLogo.addEventListener("click", toggleMusic);
+
+    bgAudio.addEventListener("loadedmetadata", function () {
+        duration.textContent = formatTime(bgAudio.duration);
+        progressBar.max = bgAudio.duration;
+    });
+
+    bgAudio.addEventListener("timeupdate", function () {
+        currentTime.textContent = formatTime(bgAudio.currentTime);
+        progressBar.value = bgAudio.currentTime;
+    });
+
+    progressBar.addEventListener("input", function () {
+        bgAudio.currentTime = progressBar.value;
+    });
 </script>
 </body>
 </html>
