@@ -12,8 +12,7 @@
 
         body {
             font-family: "Microsoft Yahei", sans-serif;
-            background:
-                linear-gradient(135deg, #eef7ff 0%, #dceeff 45%, #d0e8ff 100%);
+            background: linear-gradient(135deg, #eef7ff 0%, #dceeff 45%, #d0e8ff 100%);
             color: #1f3450;
             max-width: 1100px;
             margin: 0 auto;
@@ -24,7 +23,7 @@
             line-height: 1.8;
         }
 
-        /* ========== 固定顶部导航栏【位置不动，top:0】 ========== */
+        /* ========== 固定顶部导航栏 ========== */
         .nav {
             position: fixed;
             top: 0;
@@ -52,7 +51,7 @@
             text-decoration: underline;
         }
 
-        /* ==========左上角音乐按钮+圆形社团logo【导航栏下方，导航栏位置不变】========== */
+        /* ==========左上角音乐按钮+圆形社团logo ========== */
         .top-audio {
             position: fixed;
             top: 58px;
@@ -100,12 +99,12 @@
             box-shadow: 0 8px 20px rgba(37, 107, 191, 0.45);
         }
 
-        /* ==========头版标题横幅图片========== */
-        .banner-wrap{
+        /* ==========首页顶部大图（headimg.jpg）========== */
+        .top-img-wrap{
             width:100%;
             margin-bottom:30px;
         }
-        .banner-wrap img{
+        .top-img-wrap img{
             width:100%;
             border-radius:16px;
             box-shadow:0 8px 22px rgba(52,141,224,0.2);
@@ -168,6 +167,13 @@
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 18px 34px rgba(31, 111, 191, 0.35);
         }
+        .pic-desc{
+            margin-top:8px;
+            text-align:center;
+            font-size:14px;
+            color:#4a7ba6;
+            line-height:1.6;
+        }
 
         /* 表格 */
         table {
@@ -187,9 +193,13 @@
         tr:nth-child(even) {
             background: #e8f4ff;
         }
+        /* 鼠标悬停行加深 */
+        tbody tr:hover {
+            background-color: #cbe7ff;
+        }
 
         /* 视频 */
-        embed {
+        video {
             margin-top:16px;
             border-radius:14px;
             border:3px solid #fff;
@@ -252,7 +262,7 @@
     </style>
 </head>
 <body id="top">
-    <!-- ==========固定导航栏【保持在页面最顶端，位置不动】========== -->
+    <!-- ==========固定导航栏========== -->
     <div class="nav">
         <a href="#intro">社团简介</a> |
         <a href="#activity">活动安排</a> |
@@ -261,7 +271,7 @@
         <a href="#apply">在线报名</a>
     </div>
 
-    <!-- 左上角音乐播放暂停 + 圆形社团logo 【导航栏下方】 -->
+    <!-- 左上角音乐播放暂停 + 圆形社团logo  -->
     <div class="top-audio">
         <audio id="bgAudio" src="bg.mp3" loop>
         <button id="musicBtn" onclick="toggleMusic()">
@@ -271,9 +281,9 @@
         <img id="clubLogo" src="logo.jpg" alt="打击乐社标志">
     </div>
 
-    <!-- 头版横幅 -->
-    <div class="banner-wrap">
-        <img src="banner.jpg" alt="打击乐社招新头图">
+    <!-- 首页顶部大图 -->
+    <div class="top-img-wrap">
+        <img src="headimg.jpg" alt="打击乐社招新头图">
     </div>
 
     <div class="beat-line"></div>
@@ -289,47 +299,52 @@
         <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
-    <!-- 活动安排，表头全部居中，第三列前两行rowspan合并 -->
+    <!-- 活动安排 -->
     <section id="activity">
         <h2>活动安排</h2>
         <table>
-            <tr>
-                <th colspan="4">打击乐社 2026 年春季学期活动安排表</th>
-            </tr>
-            <tr>
-                <th>活动名称</th>
-                <th>活动时间</th>
-                <th>活动地点</th>
-                <th>负责人</th>
-            </tr>
-            <tr>
-                <td>新成员见面会</td>
-                <td>第2周周五晚19:00</td>
-                <td rowspan="2">学生活动中心排练室405</td>
-                <td>张同学</td>
-            </tr>
-            <tr>
-                <td>打击乐基础教学公开课</td>
-                <td>第3周周六下午14:30</td>
-                <td>李同学</td>
-            </tr>
-            <tr>
-                <td>校园音乐节合奏排练</td>
-                <td>每周二、周四晚上</td>
-                <td>学生活动中心排练室405</td>
-                <td>王同学</td>
-            </tr>
-            <tr>
-                <td>期末打击乐专场汇演</td>
-                <td>第16周周六晚</td>
-                <td>大学生活动中心大礼堂</td>
-                <td>赵同学</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th colspan="4">打击乐社 2026 年春季学期活动安排表</th>
+                </tr>
+                <tr>
+                    <th>活动名称</th>
+                    <th>活动时间</th>
+                    <th>活动地点</th>
+                    <th>负责人</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>新成员见面会</td>
+                    <td>第2周周五晚19:00</td>
+                    <td>学生活动中心排练室405</td>
+                    <td>张同学</td>
+                </tr>
+                <tr>
+                    <td>打击乐基础教学公开课</td>
+                    <td>第3周周六下午14:30</td>
+                    <td>学生活动中心排练室405</td>
+                    <td>李同学</td>
+                </tr>
+                <tr>
+                    <td>校园音乐节合奏排练</td>
+                    <td>每周二、周四晚上</td>
+                    <td>学生活动中心排练室405</td>
+                    <td>王同学</td>
+                </tr>
+                <tr>
+                    <td>期末打击乐专场汇演</td>
+                    <td>第16周周六晚</td>
+                    <td>大学生活动中心大礼堂</td>
+                    <td>赵同学</td>
+                </tr>
+            </tbody>
         </table>
         <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
-    <!-- 风采展示 -->
+    <!-- 风采展示（每张图带单独介绍） -->
     <section id="show">
         <h2>风采展示</h2>
         <div class="gallery-box">
@@ -337,20 +352,24 @@
                 <a href="club_intro.html">
                     <img src="drum1.jpg" alt="社员排练">
                 </a>
+                <p class="pic-desc">排练室内架子鼓基础训练，在一次次练习中打磨节奏</p>
             </div>
             <div class="gallery-item">
                 <img src="drum2.jpg" alt="社团演出">
+                <p class="pic-desc">草坪户外合奏，在阳光下感受打击乐的轻松氛围</p>
             </div>
             <div class="gallery-item">
                 <img src="drum3.jpg" alt="课堂教学">
+                <p class="pic-desc">校园文化活动现场，我们登台展示合奏节目</p>
             </div>
             <div class="gallery-item">
                 <img src="drum4.jpg" alt="合奏练习">
+                <p class="pic-desc">多乐器课堂练习，尝试马林巴、小军鼓等丰富音色</p>
             </div>
         </div>
         <p style="color:#4a7ba6;">📷点击第一张图片查看社团活动介绍</p>
         <br>
-        <embed src="drum.mp4" width="640" height="360">
+        <video src="drum.mp4" width="640" height="360" controls></video>
         <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
@@ -471,7 +490,6 @@
             musicText.textContent = "播放音乐";
         }
     }
-    //点击圆形logo同样切换音乐
     clubLogo.addEventListener("click", toggleMusic);
 </script>
 </body>
