@@ -1,338 +1,479 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>打击乐社2026年招新</title>
+    <title>打击乐社｜清新蓝系招新</title>
     <style>
-        :root {
-            --primary: #ff6b35;
-            --secondary: #f7b801;
-            --accent: #e84545;
-            --bg-dark: #0a0a1a;
-            --bg-card: #1a1a3e;
-            --bg-nav: #12122e;
-            --text-light: #e0e0e0;
-            --text-muted: #888888;
-            --border-color: #333355;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+            font-family: "Microsoft Yahei", "PingFang SC", sans-serif;
+            background:
+                linear-gradient(135deg, #eef6ff 0%, #dcf4ff 45%, #cdefff 100%);
+            color: #1f3a5f;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-top: 70px;
+            padding-left:24px;
+            padding-right:24px;
+            padding-bottom:30px;
             line-height: 1.8;
-            scroll-behavior: smooth;
         }
-        #music-control {
-            position: fixed; top: 15px; left: 15px; z-index: 1000;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white; padding: 10px 20px; border-radius: 25px;
-            cursor: pointer; font-weight: bold;
-            box-shadow: 0 4px 15px rgba(255,107,53,0.4);
-            transition: all 0.3s;
+
+        /* ========== 固定在页面最顶端的导航栏 ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width:100%;
+            z-index:998;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.88);
+            border-bottom: 1px solid #bde0ff;
+            padding:12px 10px;
+            box-shadow: 0 3px 12px rgba(52, 141, 224, 0.15);
         }
-        #music-control:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(255,107,53,0.6);
+
+        .nav a {
+            color: #256bbf;
+            font-size: 17px;
+            font-weight: bold;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.2s ease;
         }
-        nav {
-            background: var(--bg-nav); padding: 15px 0; text-align: center;
-            position: sticky; top: 0; z-index: 100;
-            border-bottom: 2px solid var(--primary);
+
+        .nav a:hover {
+            color: #0f4a8f;
+            text-decoration: underline;
         }
-        nav a {
-            color: var(--secondary); text-decoration: none; margin: 0 15px;
-            font-size: 18px; font-weight: bold; transition: color 0.3s;
-            position: relative;
+
+        /* ==========左上角音乐按钮+圆形社团logo========== */
+        .top-audio {
+            position: fixed;
+            top: 75px;
+            left: 14px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        nav a:hover { color: var(--primary); }
-        nav a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0;
-            width: 0; height: 2px; background: var(--primary);
-            transition: width 0.3s;
+
+        .top-audio button {
+            background: linear-gradient(135deg, #348de0, #256bbf);
+            color: #fff;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 26px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 14px rgba(37, 107, 191, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        nav a:hover::after { width: 100%; }
-        header {
-            text-align: center; padding: 80px 20px 40px;
-            background: linear-gradient(135deg, var(--bg-nav) 0%, var(--bg-dark) 100%);
+
+        .top-audio button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 107, 191, 0.45);
         }
-        header h1 {
-            font-size: 3em; color: var(--primary);
-            text-shadow: 2px 2px 4px rgba(255,107,53,0.3);
-            margin-bottom: 10px;
+
+        /*圆形社团标志*/
+        #clubLogo {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 14px rgba(37, 107, 191, 0.35);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        header p { color: var(--secondary); font-size: 1.2em; }
-        .deco {
-            position: fixed; border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
-            pointer-events: none; z-index: -1;
+
+        #clubLogo:hover {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 8px 20px rgba(37, 107, 191, 0.45);
         }
-        .deco:nth-child(1) { width: 300px; height: 300px; top: 5%; left: -5%; }
-        .deco:nth-child(2) { width: 400px; height: 400px; bottom: 5%; right: -10%;
-            background: radial-gradient(circle, rgba(247,184,1,0.06) 0%, transparent 70%); }
+
+        /* ==========头版标题横幅图片========== */
+        .banner-wrap{
+            width:100%;
+            margin-bottom:30px;
+        }
+        .banner-wrap img{
+            width:100%;
+            border-radius:16px;
+            box-shadow:0 8px 22px rgba(52,141,224,0.2);
+            display:block;
+        }
+
+        /* 节奏装饰线 */
+        .beat-line {
+            height: 6px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #72c2ff, #348de0, #72c2ff, #b3e5ff);
+            background-size: 200% 100%;
+            animation: beatMove 2.4s linear infinite;
+            margin: 10px 0 30px;
+        }
+
+        @keyframes beatMove {
+            0% { background-position: 0% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* 区块 */
         section {
-            padding: 50px 20px; max-width: 1000px; margin: 0 auto;
-            border-top: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid #bde0ff;
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 24px rgba(52, 141, 224, 0.1);
         }
-        section h2 {
-            color: var(--secondary); font-size: 1.8em; margin-bottom: 20px;
-            padding-bottom: 10px; border-bottom: 2px solid var(--primary);
+
+        h2 {
+            color: #1f6fbf;
+            margin-bottom: 16px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
         }
-        section p { margin-bottom: 15px; text-indent: 2em; }
+
+        h2::before {
+            content: "🥁";
+            margin-right: 10px;
+        }
+
+        /* =====风采展示4张图片网格布局===== */
+        .gallery-box{
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+            gap:18px;
+            margin:12px 0 20px;
+        }
+        .gallery-item img{
+            width:100%;
+            border-radius:14px;
+            border: 3px solid #fff;
+            box-shadow: 0 10px 24px rgba(52, 141, 224, 0.2);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .gallery-item img:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 18px 34px rgba(31, 111, 191, 0.35);
+        }
+
+        /* 表格 */
         table {
-            width: 100%; border-collapse: collapse; margin: 20px 0;
-            background: var(--bg-card); border-radius: 10px; overflow: hidden;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
         }
-        table th {
-            background: var(--primary); color: white; padding: 12px;
-            text-align: center; font-weight: bold;
+
+        th, td {
+            border: 1px solid #aed6ff;
+            padding: 12px;
+            text-align: left;
         }
-        table td {
-            border: 1px solid var(--border-color); padding: 10px; text-align: center;
+
+        th {
+            background: linear-gradient(90deg, #348de0, #5aa9f0);
+            color: #fff;
         }
-        table tr:nth-child(even) { background: rgba(255,255,255,0.05); }
-        .image-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr);
-            gap: 20px; margin: 20px 0;
+
+        .center-row td {
+            text-align: center;
         }
-        .image-grid a {
-            display: block; overflow: hidden; border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+
+        tr:nth-child(even) {
+            background: #e8f4ff;
         }
-        .image-grid a:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255,107,53,0.4);
+
+        /* 视频 */
+        embed {
+            margin-top: 16px;
+            border-radius: 14px;
+            border: 3px solid #fff;
+            box-shadow: 0 10px 24px rgba(52, 141, 224, 0.2);
+            max-width: 100%;
         }
-        .image-grid img {
-            width: 100%; height: 250px; object-fit: cover;
-            display: block; transition: transform 0.3s;
+
+        /* 表单 */
+        input[type="text"],
+        select,
+        textarea {
+            background: #fff;
+            border: 1px solid #8fc3f7;
+            border-radius: 8px;
+            padding: 8px 10px;
+            color: #1f3a5f;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
-        .image-grid a:hover img { transform: scale(1.05); }
-        .video-container { text-align: center; margin: 20px 0; }
-        video {
-            width: 100%; max-width: 800px; border-radius: 10px; margin: 20px 0;
+
+        input[type="text"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #348de0;
+            box-shadow: 0 0 0 3px rgba(52, 141, 224, 0.15);
         }
-        form table td { background: var(--bg-card); padding: 10px; }
-        form input[type="text"], form select, form textarea {
-            width: 100%; padding: 8px; border: 1px solid var(--border-color);
-            border-radius: 5px; background: var(--bg-dark); color: var(--text-light);
-            font-family: inherit;
+
+        textarea {
+            width: 340px;
+            height: 110px;
         }
-        form input[type="submit"], form input[type="reset"] {
-            background: var(--primary); color: white; border: none;
-            padding: 10px 20px; border-radius: 5px; cursor: pointer;
-            font-weight: bold; transition: background 0.3s;
+
+        input[type="submit"],
+        input[type="reset"] {
+            background: linear-gradient(135deg, #348de0, #256bbf);
+            color: #fff;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 22px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 6px 14px rgba(37, 107, 191, 0.3);
+            transition: transform 0.2s ease;
         }
-        form input[type="submit"]:hover, form input[type="reset"]:hover {
-            background: var(--accent);
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            transform: translateY(-2px);
         }
-        .top-btn {
-            display: inline-block; margin-top: 20px;
-            color: var(--secondary); text-decoration: none;
-            font-weight: bold; transition: color 0.3s;
+
+        /* 返回顶部 */
+        .back-top {
+            margin-top: 24px;
         }
-        .top-btn:hover { color: var(--primary); }
-        .story h3 { color: var(--primary); margin-top: 20px; margin-bottom: 10px; }
-        footer {
-            text-align: center; padding: 30px 20px;
-            background: var(--bg-nav); border-top: 2px solid var(--primary);
-            color: var(--text-muted);
+
+        .back-top a {
+            color: #256bbf;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back-top a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
-<body>
-    <div class="deco"></div>
-    <div class="deco"></div>
-
-    <div id="music-control" onclick="toggleMusic()">🎵 点击播放背景音乐</div>
-    <audio id="bg-music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-        您的浏览器不支持 audio 标签。
-    </audio>
-
-    <nav>
+<body id="top">
+    <!-- =========固定在网页最顶部的导航栏========= -->
+    <div class="nav">
         <a href="#intro">社团简介</a> |
-        <a href="#activities">活动安排</a> |
+        <a href="#activity">活动安排</a> |
         <a href="#show">风采展示</a> |
-        <a href="#stories">社员故事</a> |
-        <a href="#signup">在线报名</a>
-    </nav>
+        <a href="#story">社员故事</a> |
+        <a href="#apply">在线报名</a>
+    </div>
 
-    <header id="top">
-        <h1>打击乐社 2026 年招新</h1>
-        <p>节奏点燃激情，打击释放自我</p>
-    </header>
+    <!-- 左上角音乐播放暂停 + 圆形社团logo -->
+    <div class="top-audio">
+        <audio id="bgAudio" src="bg.mp3" loop>
+        <button id="musicBtn" onclick="toggleMusic()">
+            <span id="musicIcon">▶️</span>
+            <span id="musicText">播放音乐</span>
+        </button>
+        <img id="clubLogo" src="logo.jpg" alt="打击乐社标志">
+    </div>
 
+    <!-- =========头版标题横幅图片 banner.jpg ========= -->
+    <div class="banner-wrap">
+        <img src="banner.jpg" alt="打击乐社招新头版横幅">
+    </div>
+
+    <div class="beat-line"></div>
+
+    <!-- 社团简介 -->
     <section id="intro">
-        <h2>一、打击乐社简介</h2>
-        <p>打击乐社成立于2010年，是学校最具活力和感染力的音乐类学生社团之一。社团以各类打击乐器为核心载体，涵盖架子鼓、爵士鼓、民族打击乐（堂鼓、排鼓、笠鼓等）、管弦乐打击乐（定音鼓、小军鼓、大鼓、钹等）、键盘打击乐（木琴、马林巴、钟琴、钢片琴等）以及世界民族打击乐（康加鼓、邦戈鼓、非洲鼓、手鼓等）等多个门类。社团致力于在校园内推广打击乐文化，培养同学们对节奏音乐的热爱与感知，提供一个交流技艺、展示才华、享受音乐的开放平台。</p>
-        <p>无论你是音乐专业的学生，还是完全零基础的爱好者，只要你对节奏和打击乐有兴趣，都欢迎加入我们的大家庭。社团会安排经验丰富的老成员进行一对一或小组帮带，从最基本的握棒姿势、基础节奏型练起，逐步过渡到复杂节奏组合、独奏片段以及合奏曲目。社团还定期邀请校内外打击乐专家举办讲座和工作坊，帮助成员拓展音乐视野，提升演奏水平。</p>
-        <p>社团平时的活动地点主要在学校学生活动中心的音乐排练室，每周安排固定的练习时间，也会根据演出和比赛的需要灵活加练。社团每学期都会组织多场公开演出，包括校园迎新晚会、社团文化节展演、校际打击乐交流音乐会等，同时也积极参与各类校级和市级文艺比赛及艺术展演活动。</p>
-        <p>社团内部设有演奏组、创作组、教学组和宣传组四个功能小组。演奏组负责日常排练和对外演出；创作组负责改编和创作打击乐曲目；教学组负责新成员培训和内部教学；宣传组负责社团活动的宣传推广和社交媒体运营。各小组之间既有明确分工又有紧密协作，共同推动社团的持续发展与进步。</p>
-        <p>社团秉承"节奏点燃激情，打击释放自我"的理念，期待更多热爱音乐的同学加入我们，一起在鼓点上挥洒青春，在节奏中绽放光芒！无论你是想成为一名舞台上的打击乐手，还是只想在忙碌的学习生活中找到一种释放压力的方式，打击乐社都将是你的最佳选择。        <p>社团还特别注重成员的综合音乐素养培养，不定期组织音乐鉴赏会、乐器知识讲座和跨社团交流活动。通过这些活动，成员们不仅能深入了解打击乐的历史渊源和流派风格，还能接触到爵士乐、古典乐、流行音乐等多种音乐风格，拓宽音乐视野。社团与学校交响乐团、民乐团、摇滚乐队等音乐类团体保持着良好的合作关系，经常联合举办音乐会和排练活动，为打击乐社员提供更广阔的展示平台。</p>
-        <p>在招生方面，社团每年秋季学期都会开展面向全校的招新活动，设置试音环节让新生展示音乐特长或表达兴趣意向。无论是否有乐器演奏经验，只要对音乐有热情，都有机会加入社团。新生入学后还会安排专门的迎新培训和老带新计划，确保每位新成员都能快速融入社团大家庭，在短时间内掌握基本的打击乐演奏技能。</p>
-        <p>社团历年来的发展成绩有目共睹。在校级文艺汇演中，打击乐社多次获得优秀表演奖和最具创意奖；在市级大学生艺术展演活动中，社团合奏节目屡获佳绩，赢得了评委和观众的一致好评。社团成员中也涌现出不少音乐人才，有人考入专业音乐院校深造，有人在各类音乐比赛中获奖，还有人成立了自己的乐队活跃于校园音乐节。</p>加入我们，让节奏成为你大学生活中最动听的背景音！社团的大门永远向热爱节奏的你敞开，期待你的到来！</p>
-        <a href="#top" class="top-btn">返回顶部</a>
+        <h2>社团简介</h2>
+        <p>打击乐社是一个充满节奏与活力的校园音乐社团，这里有架子鼓、卡洪鼓、康加鼓、小军鼓、沙锤等多种打击乐器。无论你是零基础的新同学，还是有一定演奏经验的伙伴，只要你喜欢鼓点、热爱节奏，都欢迎加入我们。我们会从基础节拍、握棒姿势、节奏型练习开始，逐步带大家进入合奏与舞台表演。社团每周开放排练时间，提供部分公用乐器，也会组织公开课、即兴交流和校园演出。在这里，你不仅能学会打鼓，还能认识一群志同道合的朋友，用清爽而有力的节拍，为校园生活留下热烈的声音。</p>
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
-    <section id="activities">
-        <h2>二、本学期主要活动安排</h2>
-        <p>为了让大家更好地了解打击乐社的日常，本学期计划安排如下几项主要活动。具体时间可能会根据学校统一安排略作调整，详情请关注社团通知。</p>
+    <!-- 活动安排 -->
+    <section id="activity">
+        <h2>活动安排</h2>
         <table>
-            <tbody>
-                <tr>
-                    <th colspan="4">打击乐社 2026 年春季学期活动安排表</th>
-                </tr>
-                <tr>
-                    <th>活动名称</th>
-                    <th>活动时间</th>
-                    <th>活动地点</th>
-                    <th>负责人</th>
-                </tr>
-                <tr>
-                    <td>新成员见面会</td>
-                    <td>3月第2周 周五晚</td>
-                    <td rowspan="2">学生活动中心 音乐教室201</td>
-                    <td>张强</td>
-                </tr>
-                <tr>
-                    <td>打击乐基础教学公开课</td>
-                    <td>3月第3周 周六下午</td>
-                    <td>李娜</td>
-                </tr>
-                <tr>
-                    <td>校园草地打击乐演奏会</td>
-                    <td>4月第2周 周日</td>
-                    <td>操场东侧草坪</td>
-                    <td>王浩</td>
-                </tr>
-                <tr>
-                    <td>期末专场音乐会</td>
-                    <td>6月第1周 周六晚</td>
-                    <td>大学生活动中心 大礼堂</td>
-                    <td>刘芳</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th colspan="4">打击乐社 2026 年春季学期活动安排表</th>
+            </tr>
+            <tr class="center-row">
+                <td>活动名称</td>
+                <td>活动时间</td>
+                <td>活动地点</td>
+                <td>负责人</td>
+            </tr>
+            <tr>
+                <td>新成员见面会</td>
+                <td>第2周周五晚19:00</td>
+                <td>学生活动中心排练室405</td>
+                <td>张同学</td>
+            </tr>
+            <tr>
+                <td>打击乐基础教学公开课</td>
+                <td>第3周周六下午14:30</td>
+                <td>学生活动中心排练室405</td>
+                <td>李同学</td>
+            </tr>
+            <tr>
+                <td>校园音乐节合奏排练</td>
+                <td>每周二、周四晚上</td>
+                <td>学生活动中心排练室405</td>
+                <td>王同学</td>
+            </tr>
+            <tr>
+                <td>期末打击乐专场汇演</td>
+                <td>第16周周六晚</td>
+                <td>大学生活动中心大礼堂</td>
+                <td>赵同学</td>
+            </tr>
         </table>
-        <p>上表仅列出了部分代表性活动，日常还会有小型即兴合奏、经验分享等活动，欢迎有想法、有创意的同学参与策划。</p>
-        <a href="#top" class="top-btn">返回顶部</a>
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
+    <!-- 风采展示【4张图片网格，第一张点击跳转club_intro.html】 -->
     <section id="show">
-        <h2>三、打击乐社风采展示</h2>
-        <p>下面是打击乐社日常排练和演出的一些精彩瞬间。点击图片可以查看活动详细介绍。</p>
-        <div class="image-grid">
-            <a href="club_intro.html">
-                <img src="percussion1.jpg" alt="打击乐社日常排练">
-            </a>
-            <a href="club_intro.html">
-                <img src="percussion2.jpg" alt="打击乐社演出风采">
-            </a>
-            <a href="club_intro.html">
-                <img src="percussion3.jpg" alt="打击乐社团队合影">
-            </a>
-            <a href="club_intro.html">
-                <img src="percussion4.jpg" alt="打击乐社比赛瞬间">
-            </a>
+        <h2>风采展示</h2>
+        <div class="gallery-box">
+            <div class="gallery-item">
+                <a href="club_intro.html">
+                    <img src="drum1.jpg" alt="社员排练">
+                </a>
+            </div>
+            <div class="gallery-item">
+                <img src="drum2.jpg" alt="社团演出">
+            </div>
+            <div class="gallery-item">
+                <img src="drum3.jpg" alt="课堂教学">
+            </div>
+            <div class="gallery-item">
+                <img src="drum4.jpg" alt="即兴合奏">
+            </div>
         </div>
-        <p>图中为打击乐社成员在日常排练和校园演出中的精彩场景。平时的训练与排练，都会在正式演出中得到充分的展示机会。</p>
-        <h3>宣传视频示例</h3>
-        <p>下面嵌入一段打击乐社宣传视频。如果暂时没有真实的视频文件，可以先保留代码结构，待以后再替换为真实文件路径。</p>
-        <div class="video-container">
-            <video controls>
-                <source src="video.mp4" type="video/mp4">
-                您的浏览器不支持 video 标签。
-            </video>
-        </div>
-        <a href="#top" class="top-btn">返回顶部</a>
+        <p style="color:#4a7ba6;">📷点击第一张图片查看社团活动介绍</p>
+        <br>
+        <embed src="drum.mp4" width="640" height="360">
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
-    <section id="stories">
-        <h2>四、社员故事（节选）</h2>
-        <div class="story">
-            <h3>1. 从零基础到舞台敲击</h3>
-            <p>小李是大一新生，加入打击乐社之前连鼓棒都没拿过。第一次参加社团活动，他站在架子鼓前手足无措，连最基本的握棒姿势都不清楚。但在学长学姐的热情帮助下，他从最基础的单跳、双跳练起，每天利用晚自习后的一小时在排练室练习。一个学期之后，他已经能够独立完成好几首流行歌曲的架子鼓伴奏，并在社团新年晚会上完成了自己的首次舞台独奏表演。当最后一个鼓点落下，台下响起热烈掌声的那一刻，小李知道，自己找到了真正的热爱。如今他已经是社团演奏组的核心成员，每逢演出必是压轴鼓手。</p>
-            <h3>2. 在节奏中找到自信</h3>
-            <p>小王是一个性格内向的同学，以前不太愿意在公众场合表现自己。加入打击乐社后，大家一起排练、一起讨论节奏型、一起为演出加班加点，让他慢慢习惯了在别人面前开口说话、展示自己。在一次小型社团汇报演出中，他鼓起勇气站起来，用康加鼓演奏了一段自编的节奏独奏，虽然中间出了一个小错，但同学们给了他最温暖的鼓励掌声。从那以后，小王变得越来越开朗，也愿意主动承担社团活动中的组织工作。他说："是打击乐让我找到了表达自我的方式，节奏就是我的语言。"</p>
-            <h3>3. 因打击乐结识一群朋友</h3>
-            <p>很多社员表示，加入打击乐社最大的收获不仅仅是学会了一种乐器演奏技巧，更是认识了一群志同道合的好朋友。大家一起交流喜欢的音乐和乐队，互相推荐好听的曲目，一起练琴、一起排练、一起为演出熬夜准备道具，在忙碌的学习生活之外，多了一份珍贵的陪伴和回忆。不少社员说，大学四年最难忘的不是某门课的考试，而是社团排练室里大家一起打鼓到深夜的那些时光。</p>
-            <p>如果你也喜欢音乐，期待在大学生活中拥有一段与打击乐相关的美好回忆，欢迎加入我们，一起在鼓点上敲击出青春的节奏，在旋律中书写属于自己的故事。打击乐社，等你一起来敲出精彩！</p>            <h3>4. 从排练室到舞台的蜕变</h3>
-            <p>小张是大二时加入打击乐社的，当时他只是出于好奇想学一门乐器。第一次走进排练室，他被满屋子的鼓和打击乐器震撼了——从巨大的堂鼓到小巧的沙锤，从威严的定音鼓到灵动的木琴，每一件乐器都在诉说着节奏的故事。在社团的引导下，他选择了架子鼓作为主攻方向。起初他的节奏感很差，连最简单的四四拍都打不稳，但在社团"老带新"制度的帮助下，一位大三的学长每天陪他练习基础节奏型。三个月后，小张已经能够流畅地演奏整首歌曲的鼓点伴奏。半年后的社团年会上，他鼓起勇气报名参加了独奏节目，虽然紧张得手心出汗，但当第一个鼓点敲出去的那一刻，他完全沉浸在了音乐的世界里。演出结束后，台下雷鸣般的掌声让他热泪盈眶——那一刻他明白，坚持和热爱真的可以创造奇迹。</p>
-        </div>
-        <a href="#top" class="top-btn">返回顶部</a>
+    <!-- 社员故事 -->
+    <section id="story">
+        <h2>社员故事</h2>
+        <p>刚入学的时候，我对打击乐几乎一无所知，只是听歌时总会被清晰有力的鼓点吸引。第一次经过社团招新摊位，听见排练室里传来整齐的节奏，我鼓起勇气报了名。刚开始练习时，手脚配合并不顺利，简单的节拍也要反复练很多次。但社团里的学长学姐都很耐心，会把节奏拆成一小段一小段带我们慢练，也会鼓励我们不要着急。经过一段时间的练习，我终于第一次站上校园晚会的舞台。当鼓槌落下，音乐响起，全场跟着节奏一起律动，那种成就感让我至今难忘。社团不只有训练，也有很多轻松有趣的交流。我们会一起听鼓曲、玩即兴、分享练习心得。这里没有人会因为基础弱而被嘲笑，大家都是因为喜欢节奏才聚在一起。如果你也想体验鼓点带来的快乐，欢迎加入打击乐社，我们一起从第一拍开始，敲出属于自己的青春节拍。</p>
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
-    <section id="signup">
-        <h2>五、打击乐社在线报名表</h2>
-        <p>请认真填写以下信息，确保联系方式准确无误。提交后，社团会通过电话或短信的方式通知面谈或试音时间。</p>
-        <form action="#" method="post">
-            <table border="1" cellspacing="0" cellpadding="5" width="100%">
+    <!-- 在线报名 -->
+    <section id="apply">
+        <h2>在线报名</h2>
+        <form>
+            <table>
                 <tr>
-                    <td width="20%">姓名：</td>
-                    <td><input type="text" name="username" size="20"></td>
+                    <td>姓名：</td>
+                    <td><input type="text" name="username"></td>
                 </tr>
                 <tr>
                     <td>性别：</td>
-                    <td><input type="radio" name="gender" value="男" checked> 男 <input type="radio" name="gender" value="女"> 女</td>
+                    <td>
+                        <input type="radio" name="gender" value="男">男
+                        <input type="radio" name="gender" value="女">女
+                    </td>
                 </tr>
                 <tr>
                     <td>出生日期：</td>
-                    <td><input type="text" name="year" size="4"> 年 <input type="text" name="month" size="2"> 月 <input type="text" name="day" size="2"> 日</td>
+                    <td>
+                        年<input type="text" name="year" size="4">
+                        月<input type="text" name="month" size="2">
+                        日<input type="text" name="day" size="2">
+                    </td>
                 </tr>
                 <tr>
-                    <td>手机邮箱：</td>
-                    <td>手机：<input type="text" name="phone" size="15"><br>邮箱：<input type="text" name="email" size="30"></td>
+                    <td>手机号码：</td>
+                    <td><input type="text" name="phone"></td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input type="text" name="email"></td>
                 </tr>
                 <tr>
                     <td>是否有打击乐基础：</td>
-                    <td><input type="radio" name="base" value="无基础" checked> 无基础 <input type="radio" name="base" value="会几首简单曲目"> 会几首简单曲目 <input type="radio" name="base" value="可独立演奏"> 可独立演奏</td>
+                    <td>
+                        <input type="radio" name="base" value="有">有
+                        <input type="radio" name="base" value="无">无
+                    </td>
                 </tr>
                 <tr>
-                    <td>兴趣方向（可多选）：</td>
-                    <td><input type="checkbox" name="hobby" value="架子鼓"> 架子鼓 <input type="checkbox" name="hobby" value="民族打击乐"> 民族打击乐 <input type="checkbox" name="hobby" value="管弦打击乐"> 管弦打击乐 <input type="checkbox" name="hobby" value="世界打击乐"> 世界打击乐 <input type="checkbox" name="hobby" value="创作"> 原创作曲</td>
+                    <td>兴趣方向（多选）：</td>
+                    <td>
+                        <input type="checkbox" name="hobby" value="架子鼓">架子鼓
+                        <input type="checkbox" name="hobby" value="卡洪鼓">卡洪鼓
+                        <input type="checkbox" name="hobby" value="康加鼓">康加鼓
+                        <input type="checkbox" name="hobby" value="小军鼓">小军鼓
+                        <input type="checkbox" name="hobby" value="合奏演出">合奏演出
+                    </td>
                 </tr>
                 <tr>
                     <td>年级：</td>
-                    <td><select name="grade"><option value="大一" selected>大一</option><option value="大二">大二</option><option value="大三">大三</option><option value="大四">大四</option><option value="研究生">研究生</option></select></td>
+                    <td>
+                        <select name="grade">
+                            <option>大一</option>
+                            <option>大二</option>
+                            <option>大三</option>
+                            <option>大四</option>
+                            <option>研究生</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td>自我介绍：</td>
-                    <td><textarea name="intro" rows="6" cols="50">请简单介绍自己、以及加入打击乐社的理由……</textarea></td>
+                    <td><textarea name="intro" placeholder="请简单介绍自己，以及加入打击乐社的理由……"></textarea></td>
                 </tr>
                 <tr>
-                    <td>是否服从活动安排：</td>
-                    <td><input type="radio" name="obey" value="是" checked> 是 <input type="radio" name="obey" value="否"> 否</td>
+                    <td>是否服从社团活动安排：</td>
+                    <td>
+                        <input type="radio" name="arrange" value="是">是
+                        <input type="radio" name="arrange" value="否">否
+                    </td>
                 </tr>
                 <tr>
-                    <td>提交操作：</td>
-                    <td><input type="submit" value="提交报名"> <input type="reset" value="重置表单"></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="提交报名">
+                        <input type="reset" value="重置表单">
+                    </td>
                 </tr>
             </table>
         </form>
-        <p>提交表单后，如需修改信息，可以再次填写并提交最新的一份。</p>
-        <a href="#top" class="top-btn">返回顶部</a>
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
     </section>
 
-    <footer>
-        <p>打击乐社 · 2026 招新示例网页（教学参考用）</p>
-        <p>本页面仅作为 HTML 基础实验的示例代码。</p>
-    </footer>
+<script>
+    const bgAudio = document.getElementById("bgAudio");
+    const musicIcon = document.getElementById("musicIcon");
+    const musicText = document.getElementById("musicText");
+    const clubLogo = document.getElementById("clubLogo");
 
-    <script>
-        function toggleMusic() {
-            var audio = document.getElementById('bg-music');
-            var btn = document.getElementById('music-control');
-            if (audio.paused) {
-                audio.play();
-                btn.textContent = '🎵 音乐播放中 - 点击暂停';
-            } else {
-                audio.pause();
-                btn.textContent = '🎵 点击播放背景音乐';
-            }
+    function toggleMusic() {
+        if (bgAudio.paused) {
+            bgAudio.play();
+            musicIcon.textContent = "⏸️";
+            musicText.textContent = "暂停音乐";
+        } else {
+            bgAudio.pause();
+            musicIcon.textContent = "▶️";
+            musicText.textContent = "播放音乐";
         }
-    </script>
+    }
+    //点击圆形logo也切换音乐播放暂停
+    clubLogo.addEventListener("click", toggleMusic);
+</script>
 </body>
 </html>
+
