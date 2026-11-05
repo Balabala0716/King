@@ -50,8 +50,6 @@ a{color:var(--cinnabar);text-decoration:none}
 .nav-icon{
   width:36px;height:36px;border-radius:50%;object-fit:cover;
   border:1px solid var(--line);background:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;color:var(--cinnabar);
 }
 .brand{
   font-size:15px;letter-spacing:.16em;color:var(--ink);
@@ -65,14 +63,13 @@ a{color:var(--cinnabar);text-decoration:none}
 .nav a:hover{color:var(--cinnabar)}
 .nav a+a::before{content:"·";color:var(--line);margin-right:8px}
 
-/* ===== 首屏横幅 背景图自行替换 hero‑banner.jpg ===== */
+/* ===== 首屏横幅 背景图自行替换 hero-banner.jpg ===== */
 .hero{
   position:relative;overflow:hidden;
   padding:72px 20px 56px;
   background:
     linear-gradient(180deg, rgba(20,18,16,.55) 0%, rgba(40,36,30,.45) 55%, rgba(60,54,46,.4) 100%),
-    url("hero-banner.jpg") center/cover no-repeat,
-    #7c705e;
+    url("hero-banner.jpg") center/cover no-repeat;
   color:#f1e9d8;
 }
 .strings{position:absolute;inset:0;pointer-events:none}
@@ -158,7 +155,7 @@ table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
 .room{color:var(--jade);font-size:13px}
 .table-cap{font-size:12.5px;color:#7b7160;letter-spacing:.04em;margin-bottom:2px}
 
-/* ===== 风采轮播：四张图左右切换+圆点指示器 ===== */
+/* ===== 风采轮播：只改这里 ===== */
 .slider-wrap{
   position:relative;
   max-width:860px;
@@ -212,6 +209,7 @@ table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
 }
 .slider-prev{left:12px}
 .slider-next{right:12px}
+
 .slider-dots{
   display:flex;
   justify-content:center;
@@ -230,7 +228,13 @@ table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
   background:#9c3a2e;
   transform:scale(1.2);
 }
+
 .fig-cap{font-size:12.5px;color:#7b7160;margin-top:8px;letter-spacing:.04em}
+.fig-cap span{color:var(--cinnabar)}
+
+.video-block{margin:22px 0 4px}
+.embed-frame{position:relative;border:1px solid #b7a98c;background:#1c1916;padding:6px}
+.embed-frame embed{display:block;width:100%;height:auto;aspect-ratio:16/9}
 
 /* ===== 故事 ===== */
 .story{margin-bottom:26px;padding-left:20px;position:relative}
@@ -319,8 +323,8 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   </button>
   <span class="play-hint">点左键听社歌</span>
 
-  <!-- 古筝社团图标，上传guzheng‑icon.png即可显示图片，无图显示文字"筝" -->
-  <div class="nav-icon">筝</div>
+  <!-- 古筝社团图标 -->
+  <img src="guzheng-icon.png" alt="古筝社团图标" class="nav-icon">
 
   <div class="brand">古筝社<em>·</em>弦音</div>
   <nav class="nav">
@@ -334,7 +338,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
 
 <audio id="bgMusic" src="theme.mp3" preload="auto" loop>
 
-<!-- ===== 首屏横幅 背景图hero‑banner.jpg ===== -->
+<!-- ===== 首屏横幅 背景图 hero-banner.jpg ===== -->
 <section class="hero">
   <div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="hero-inner">
@@ -354,11 +358,13 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   <!-- ===== 一、社团简介：可折叠 ===== -->
   <section class="section" id="intro">
     <div class="sec-head"><span class="sec-no">一</span><h2>社团简介</h2><span class="rule"></span></div>
+
     <div class="prose intro-body" id="introBody">
       <div class="intro-short">
         <p>校园古筝社成立于 2013 年秋天，最初只是六个人、两台琴、一间借来的空教室。十二年过去，社团已经成为校内规模稳定的传统器乐社团之一，常年保持四十余名在册社员，累计带出过两百多位从零开始学琴的同学。</p>
         <p>社团的定位很朴素：<strong>让想学古筝的人在校园里真的学会一首曲子。</strong>我们不挂靠任何商业机构，不收取学费，也不设"考核淘汰"，所有教学由高年级社员与特邀老师义务承担。</p>
       </div>
+
       <div class="intro-full">
         <p>教学上我们采用三段式推进：<strong>第一阶段是技法与乐理</strong>，包括古筝各部名称、D 调定弦、勾、托、抹、挑、劈、大撮小撮、上下滑音、揉弦与按音，配合最基本的简谱识读，这一段通常需要四到六周；<strong>第二阶段是曲目</strong>，从《小星星》《茉莉花》这类短小曲目入手，逐步过渡到《渔舟唱晚》《浏阳河》《战台风》选段；<strong>第三阶段是合奏与舞台</strong>，学习分声部、听别人的节奏、控制音量与呼吸，最终在学期末的雅集或校园晚会上完整演出一首曲子。</p>
         <p>曲目风格上，社团偏重传统筝曲，但也不排斥现代改编。近两年我们排过《沧海一声笑》的合奏版、把《青花瓷》的旋律改编成五声调式，也在迎新晚会上试过古筝与吉他、打击乐的混编。我们始终认为，古筝不是只能活在博物馆里的乐器，它可以和现在的生活发生关系。</p>
@@ -366,8 +372,10 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
         <p>社团氛围是我们最在意的东西。这里没有"谁弹得更好"的排序，只有"你这周有没有碰琴"。有人一周练五天，有人只能在周末抽一个小时，都没关系。我们更愿意看到的是：一个原本不敢在人前出声的同学，在学期末能坐在琴前，把一首完整的曲子从头弹到尾，抬手，然后听见掌声。</p>
         <p>如果你此前从未接触过任何乐器，担心自己"手笨""没天赋"，那正是我们最常见的社员画像；如果你已经考过级、想找一个能一起合奏、一起上台的地方，我们也需要你来带一带新人。古筝社不看起点，只看你愿不愿意坐下来，把手指放到弦上。</p>
       </div>
+
       <span class="toggle-btn" id="toggleIntro">展开全文 ↓</span>
     </div>
+
     <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
 
@@ -426,38 +434,44 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
         </tr>
       </table>
     </div>
+
     <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
 
-  <!-- ===== 三、风采展示：四张图左右轮播 ===== -->
+  <!-- ===== 三、风采展示：四张图左右切换 ===== -->
   <section class="section" id="show">
     <div class="sec-head"><span class="sec-no">三</span><h2>社团风采展示</h2><span class="rule"></span></div>
     <div class="prose">
-      <p>下面四张照片记录了古筝社上学期的日常练琴、春日雅集、合奏排练与专场演出。点击左右箭头或底部圆点切换图片。</p>
+      <p>下面四张照片记录了古筝社上学期的日常练琴、春日雅集、合奏排练与专场演出。点击左右箭头可切换查看不同活动瞬间。</p>
     </div>
 
     <div class="slider-wrap">
       <button class="slider-arrow slider-prev" id="prevBtn" aria-label="上一张">‹</button>
+
       <div class="slider" id="slider">
         <div class="slider-track" id="sliderTrack">
           <figure class="slide">
             <img src="show1.jpg" alt="古筝社日常练琴">
             <figcaption>周四晚练琴现场</figcaption>
           </figure>
+
           <figure class="slide">
             <img src="show2.jpg" alt="春日雅集活动">
             <figcaption>春日雅集草坪演奏</figcaption>
           </figure>
+
           <figure class="slide">
             <img src="show3.jpg" alt="合奏排练">
             <figcaption>分声部合奏排练</figcaption>
           </figure>
+
           <figure class="slide">
             <img src="show4.jpg" alt="校园民乐专场演出">
             <figcaption>校园民乐专场演出</figcaption>
           </figure>
         </div>
       </div>
+
       <button class="slider-arrow slider-next" id="nextBtn" aria-label="下一张">›</button>
     </div>
 
@@ -467,7 +481,15 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
       <span class="dot" data-index="2"></span>
       <span class="dot" data-index="3"></span>
     </div>
-    <p class="fig‑cap">点击箭头/圆点切换风采图片</p>
+
+    <p class="fig-cap" style="margin-top:14px">古筝社风采展示 · <span>点击左右箭头切换查看</span></p>
+
+    <div class="video-block">
+      <p class="table-cap">社团宣传短片（约 5 秒，自动循环播放）</p>
+      <div class="embed-frame">
+        <embed src="club-intro.mp4" type="video/mp4" width="860" height="484" autostart="true" loop="true">
+      </div>
+    </div>
 
     <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
@@ -478,6 +500,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
     <div class="prose">
       <p>以下三段故事来自社团档案，由社员本人授权整理，姓名做了简化处理。它们不约而同地指向同一件事：学古筝的门槛没有想象中高，难的是坐下来面对自己最初弹得很难听的几分钟。</p>
     </div>
+
     <div class="story">
       <h3>「我原本只是想找个安静的地方待着」</h3>
       <p class="who">小徐 · 2023 级 材料学院 · 入社两年</p>
@@ -485,6 +508,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
       <p>第一节课他连指甲都缠不好，胶布缠到手指上太紧，弹了两个音就发麻。他承认那段时间挺挫败的："别人的手像是天生会动，我的手在弦上就是一块木头。"第一学期他只学会了《茉莉花》的前半段，进度排在所有人最后。转机出现在寒假前的一次加练，他一个人在琴房待到快十点，反复弹同一个滑音，忽然发现自己不再需要看着谱子数拍子了——手指记住了。他在档案里写："那一刻很平静，有点像解出一道想了很久的题。"</p>
       <p>第二年他成了社团里最稳的伴奏声部，负责在合奏里压住节奏。他现在常跟新人说的一句话是："你不需要有天赋，你需要每周来。"</p>
     </div>
+
     <div class="story">
       <h3>「我在台上手抖，但弹完了」</h3>
       <p class="who">林晚 · 2022 级 文学院 · 现任副社长</p>
@@ -492,6 +516,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
       <p>真正把她推上台的是春日雅集。那场活动没有舞台也没有流程，负责人只是把琴搬到草坪上，说"谁想弹谁弹"。她坐在草地上犹豫了二十分钟，最后被旁边的人推了一把。她说自己那天弹的是《渔舟唱晚》的前半段，手一直在抖，中间还错了一个音，"但我把它弹完了"。弹完之后没有掌声，只有几个人抬头看了她一眼，那种"没人特别在意"的反应，反而让她松了一口气。</p>
       <p>去年六月她第一次站上礼堂的舞台，作为合奏的主旋律声部。她说那次上台前她紧张到想吐，但当她坐下来，手指碰到弦，那些练过几百遍的动作自己就接上了。"那一刻我明白，练习的意义不是让你不紧张，是让你在紧张的时候还能动。"</p>
     </div>
+
     <div class="story">
       <h3>「我们两个人，把一首曲子拆成了四只手」</h3>
       <p class="who">小陈 &amp; 阿泽 · 2021 级 · 已毕业社员</p>
@@ -499,12 +524,14 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
       <p>某天晚上两人在琴房耗到十一点，阿泽忽然提议："要不我们一个人摇，一个人按弦，先把它拆开试试？"他们真的这么练了两周：一人负责摇指，一人负责左手按音与滑音，配合着找感觉，然后再各自单独练。后来他们把这套"拆解练法"教给了后来的社员，成为社团内部一个流传下来的土办法。</p>
       <p>毕业那年，两人在专场演出的最后一首曲子里合作完成了这段摇指。档案里留下的记录只有一句："四年，终于把这段弹完了。"</p>
     </div>
+
     <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
 
   <!-- ===== 五、在线报名表 ===== -->
   <section class="section" id="form">
     <div class="sec-head"><span class="sec-no">五</span><h2>古筝社在线报名表</h2><span class="rule"></span></div>
+
     <form id="signupForm" action="#" method="post">
       <table class="form-table">
         <tr>
@@ -525,9 +552,9 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
           <th>出生日期 <span class="req">*</span></th>
           <td>
             <div class="date-cell">
-              <input type="text" name="birth‑year" placeholder="1998" maxlength="4" required><span>年</span>
-              <input type="text" name="birth‑month" placeholder="05" maxlength="2" required><span>月</span>
-              <input type="text" name="birth‑day" placeholder="12" maxlength="2" required><span>日</span>
+              <input type="text" name="birth-year" placeholder="1998" maxlength="4" required><span>年</span>
+              <input type="text" name="birth-month" placeholder="05" maxlength="2" required><span>月</span>
+              <input type="text" name="birth-day" placeholder="12" maxlength="2" required><span>日</span>
             </div>
           </td>
         </tr>
@@ -542,7 +569,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
         <tr>
           <th>是否有古筝基础 <span class="req">*</span></th>
           <td>
-            <div class="opt‑row">
+            <div class="opt-row">
               <label class="opt"><input type="radio" name="level" value="零基础" required>零基础</label>
               <label class="opt"><input type="radio" name="level" value="自学过一点">自学过一点</label>
               <label class="opt"><input type="radio" name="level" value="有系统学习经历">有系统学习经历</label>
@@ -553,7 +580,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
         <tr>
           <th>兴趣方向（可多选）</th>
           <td>
-            <div class="opt‑row">
+            <div class="opt-row">
               <label class="opt"><input type="checkbox" name="interest" value="传统筝曲">传统筝曲</label>
               <label class="opt"><input type="checkbox" name="interest" value="现代改编">现代改编</label>
               <label class="opt"><input type="checkbox" name="interest" value="合奏演出">合奏演出</label>
@@ -563,9 +590,9 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
           </td>
         </tr>
         <tr>
-          <th><label for="f‑grade">年级 <span class="req">*</span></label></th>
+          <th><label for="f-grade">年级 <span class="req">*</span></label></th>
           <td>
-            <select id="f‑grade" name="grade" required>
+            <select id="f-grade" name="grade" required>
               <option value="" selected>请选择你的年级</option>
               <option value="大一">大一</option>
               <option value="大二">大二</option>
@@ -576,13 +603,13 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
           </td>
         </tr>
         <tr>
-          <th><label for="f‑intro">自我介绍 <span class="req">*</span></label></th>
-          <td><textarea id="f‑intro" name="intro" rows="5" placeholder="请简单介绍自己、以及加入古筝社的理由……" required></textarea></td>
+          <th><label for="f-intro">自我介绍 <span class="req">*</span></label></th>
+          <td><textarea id="f-intro" name="intro" rows="5" placeholder="请简单介绍自己、以及加入古筝社的理由……" required></textarea></td>
         </tr>
         <tr>
           <th>是否服从活动安排 <span class="req">*</span></th>
           <td>
-            <div class="opt‑row">
+            <div class="opt-row">
               <label class="opt"><input type="radio" name="follow" value="是，可以按安排参加" required>是，可以按安排参加</label>
               <label class="opt"><input type="radio" name="follow" value="部分时段需协商">部分时段需协商</label>
               <label class="opt"><input type="radio" name="follow" value="暂时无法确定">暂时无法确定</label>
@@ -590,18 +617,21 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="btn‑row">
+          <td colspan="2" class="btn-row">
             <button class="btn primary" type="submit">提交报名</button>
             <button class="btn" type="reset">重置表单</button>
           </td>
         </tr>
       </table>
     </form>
+
     <div class="note">
       <b>提交说明：</b>本表单为静态页面演示，提交后不会真正发送数据。正式招新期间，请将填写内容发送至社团邮箱 guzheng.club@campus.edu，或在招新摊位现场登记。
     </div>
-    <div class="back‑top‑row"><a class="back‑top" href="#top">↑ 一键返回顶部</a></div>
+
+    <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
+
 </main>
 
 <footer>
@@ -611,68 +641,82 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
 
 <script>
 (function(){
-  // 音乐播放控制
+  // 音乐播放/暂停
   var btn = document.getElementById('playBtn');
   var music = document.getElementById('bgMusic');
   var iPlay = document.getElementById('iconPlay');
   var iPause = document.getElementById('iconPause');
-  btn.addEventListener('click',function(){
-    if(music.paused){
+
+  btn.addEventListener('click', function(){
+    if (music.paused) {
       var p = music.play();
-      if(p&&typeof p.catch==='function') p.catch(function(){});
-      iPlay.style.display='none';iPause.style.display='block';
-    }else{
+      if (p && typeof p.catch === 'function') { p.catch(function(){}); }
+      iPlay.style.display = 'none';
+      iPause.style.display = 'block';
+    } else {
       music.pause();
-      iPlay.style.display='block';iPause.style.display='none';
+      iPlay.style.display = 'block';
+      iPause.style.display = 'none';
     }
   });
-  music.addEventListener('pause',function(){
-    iPlay.style.display='block';iPause.style.display='none';
+
+  music.addEventListener('pause', function(){
+    iPlay.style.display = 'block';
+    iPause.style.display = 'none';
   });
-  music.addEventListener('play',function(){
-    iPlay.style.display='none';iPause.style.display='block';
+  music.addEventListener('play', function(){
+    iPlay.style.display = 'none';
+    iPause.style.display = 'block';
   });
 
-  // 社团简介折叠
+  // 社团简介折叠/展开
   var toggleBtn = document.getElementById('toggleIntro');
   var introBody = document.getElementById('introBody');
-  toggleBtn.addEventListener('click',function(){
-    if(introBody.classList.contains('is‑open')){
-      introBody.classList.remove('is‑open');
-      toggleBtn.textContent='展开全文 ↓';
-    }else{
-      introBody.classList.add('is‑open');
-      toggleBtn.textContent='收起 ↑';
+
+  toggleBtn.addEventListener('click', function(){
+    if (introBody.classList.contains('is-open')) {
+      introBody.classList.remove('is-open');
+      toggleBtn.textContent = '展开全文 ↓';
+    } else {
+      introBody.classList.add('is-open');
+      toggleBtn.textContent = '收起 ↑';
     }
   });
 
-  // 风采轮播
+  // 风采轮播切换：只新增这一段
   const sliderTrack = document.getElementById('sliderTrack');
   const dots = document.querySelectorAll('.dot');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
   let currentIndex = 0;
   const totalSlides = 4;
-  function goToSlide(index){
-    if(index<0) index=totalSlides‑1;
-    if(index>=totalSlides) index=0;
-    currentIndex=index;
-    sliderTrack.style.transform=`translateX(-${currentIndex*100}%)`;
-    dots.forEach((dot,i)=>{dot.classList.toggle('active',i===currentIndex);});
+
+  function goToSlide(index) {
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
+    currentIndex = index;
+    sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
   }
-  prevBtn.addEventListener('click',()=>goToSlide(currentIndex‑1));
-  nextBtn.addEventListener('click',()=>goToSlide(currentIndex+1));
-  dots.forEach(dot=>{
-    dot.addEventListener('click',()=>{goToSlide(Number(dot.dataset.index));});
+
+  prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+  nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goToSlide(Number(dot.dataset.index));
+    });
   });
 
-  // 表单阻止默认提交
+  // 表单提交演示
   var form = document.getElementById('signupForm');
-  form.addEventListener('submit',function(e){
+  form.addEventListener('submit', function(e){
     e.preventDefault();
     alert('表单已填写完成（本页面为静态演示，数据不会真实提交）。\n正式报名请将信息发送至社团邮箱 guzheng.club@campus.edu。');
   });
 })();
 </script>
+
 </body>
 </html>
