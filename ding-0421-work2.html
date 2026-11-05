@@ -131,7 +131,9 @@
             gap: 18px;
             margin: 12px 0 20px;
         }
-
+        .gallery-item a{
+            display:block;
+        }
         .gallery-item img {
             width: 100%;
             border-radius: 14px;
@@ -248,7 +250,7 @@
     <div class="logo-wrap">
         <img id="clubLogo" src="logo.jpg" alt="打击乐社标志">
     </div>
-    <!-- 原生播放器，就是截图里的样式 -->
+    <!-- 原生播放器，这里补全闭合audio标签！ -->
     <div class="audio-box">
         <audio id="myAudio" controls src="bg.mp3">
             浏览器不支持音频
@@ -450,17 +452,18 @@
     </section>
 
 <script>
+// 等页面全部加载完再绑定，防止获取不到元素
+window.onload = function(){
     const myAudio = document.getElementById('myAudio');
     const clubLogo = document.getElementById('clubLogo');
-    // 点击logo切换播放暂停
-    clubLogo.addEventListener('click', ()=>{
+    clubLogo.onclick = function(){
         if(myAudio.paused){
             myAudio.play();
         }else{
             myAudio.pause();
         }
-    })
+    }
+}
 </script>
 </body>
 </html>
-
