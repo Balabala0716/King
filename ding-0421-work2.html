@@ -2,226 +2,318 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>打击乐社招新</title>
+    <title>🥁打击乐社｜校园招新</title>
     <style>
-        body {
-            font-family: "Microsoft Yahei",sans-serif;
-            max-width:1000px;
-            margin:0 auto;
-            padding:20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .top-audio{
+        body {
+            /* 黑色底色 + css噪点纹理，摇滚做旧效果 */
+            background-color:#0b0b0b;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            color:#e6e6e6;
+            font-family:Microsoft YaHei,sans-serif;
+            max-width:1140px;
+            margin:0 auto;
+            padding:26px;
+            line-height:1.8;
+        }
+        /*左上角音频按钮固定*/
+        .audio-box{
             position:fixed;
-            top:10px;
-            left:10px;
+            top:14px;
+            left:14px;
             z-index:999;
         }
-        a{text-decoration:none;color:#0066cc;}
-        .nav{
-            margin:20px 0;
-            font-size:18px;
+        .audio-box button{
+            background:linear-gradient(135deg,#990000,#d12222);
+            color:#fff;
+            border:none;
+            padding:9px 14px;
+            border-radius:6px;
+            cursor:pointer;
+            font-weight:bold;
+            box-shadow:0 0 10px #99000077;
         }
-        .back-top{
-            margin:10px 0 30px;
+        .audio-box button:hover{
+            box-shadow:0 0 16px #ff2222aa;
+        }
+        h1{
+            text-align:center;
+            font-size:36px;
+            margin-top:40px;
+            margin-bottom:10px;
+            color:#ff3636;
+            text-shadow: 0 0 12px #880000;
+        }
+        /*导航栏，鼓点轻微跳动动画*/
+        .nav-bar{
+            margin:45px 0 60px;
+            text-align:center;
+        }
+        .nav-bar a{
+            display:inline‑block;
+            color:#ffbb44;
+            font-size:20px;
+            margin:0 10px;
+            text-decoration:none;
+            transition: transform 0.15s ease;
+        }
+        .nav-bar a:hover{
+            transform: scale(1.08); /*模拟敲击鼓面弹跳*/
+            text-shadow: 0 0 8px #ff6600;
         }
         section{
-            margin:80px 0;
+            margin:110px 0;
+            padding:28px;
+            border-radius:12px;
+            background-color:#161616dd;
+            border:1px solid #701818;
+            box-shadow: 0 0 22px #660e0e44;
         }
+        h2{
+            color:#ff4c4c;
+            margin-bottom:18px;
+            border-left:5px solid #c41c1c;
+            padding-left:12px;
+        }
+        .back-top{
+            margin-top:24px;
+        }
+        .back-top a{
+            color:#ffc142;
+            text-decoration:none;
+        }
+        .back-top a:hover{
+            text-decoration:underline;
+        }
+        /*表格摇滚深色样式*/
         table{
-            border-collapse: collapse;
             width:100%;
+            border-collapse:collapse;
+            margin:16px 0;
         }
-        table,td,th{
-            border:1px solid #333;
-            padding:8px;
+        th,td{
+            border:1px solid #5c2222;
+            padding:12px;
         }
-        .center{text-align:center;}
+        th{
+            background:linear-gradient(90deg,#420f0f,#221111);
+            color:#ff7474;
+        }
+        .center-row td{
+            text-align:center;
+        }
+        tr:nth-child(even){
+            background:#1e141480;
+        }
+        img{
+            max-width:660px;
+            border-radius:8px;
+            border:2px solid #801c1c;
+            box-shadow:0 0 14px #88101055;
+        }
+        img:hover{
+            box-shadow:0 0 22px #bb181877;
+        }
         textarea{
-            width:300px;
-            height:100px;
+            width:360px;
+            height:120px;
+            background:#241717;
+            color:#fff;
+            border:1px solid #882222;
+            padding:8px;
+            border-radius:4px;
+        }
+        input,select{
+            background:#241717;
+            color:#ffffff;
+            border:1px solid #7c2020;
+            padding:5px 7px;
+            border-radius:3px;
+        }
+        input[type="submit"]{
+            background:#b41c1c;
+            border:none;
+            padding:7px 16px;
+            cursor:pointer;
+        }
+        input[type="reset"]{
+            background:#333333;
+            border:none;
+            padding:7px 16px;
+            cursor:pointer;
         }
     </style>
 </head>
 <body id="top">
-<!--1.左上角点击播放背景音乐-->
-<div class="top-audio">
-    <audio id="bgMusic" src="bg.mp3">
-    <button onclick="document.getElementById('bgMusic').play()">🎵播放背景音乐</button>
-</div>
+    <!--1.左上角音频播放-->
+    <div class="audio-box">
+        <audio id="bgAudio" src="bg.mp3">
+        <button onclick="document.getElementById('bgAudio').play()">🥁 播放打击乐BGM</button>
+    </div>
 
-<div class="nav">
-    <!--2.锚点链接：社团简介 | 活动安排 | 风采展示 | 社员故事 | 在线报名-->
-    <a href="#intro">社团简介</a> |
-    <a href="#activity">活动安排</a> |
-    <a href="#show">风采展示</a> |
-    <a href="#story">社员故事</a> |
-    <a href="#form">在线报名</a>
-</div>
+    <h1>🥁 校园打击乐社｜火热招新 🥁</h1>
 
-<section id="intro">
-    <h2>社团简介</h2>
-    <p>打击乐社是校园里充满热血与节奏的音乐社团，汇聚热爱架子鼓、康加鼓、卡洪鼓、三角铁、沙锤等各类打击乐器的同学。无论你是完全零基础，从来没有碰过鼓棒，还是已经拥有演奏经验，只要你热爱节奏、向往充满力量的音乐，都欢迎加入打击乐社。
+    <!--2.五个锚点导航链接-->
+    <div class="nav-bar">
+        <a href="#intro">社团简介</a> |
+        <a href="#activity">活动安排</a> |
+        <a href="#show">风采展示</a> |
+        <a href="#story">社员故事</a> |
+        <a href="#apply">在线报名</a>
+    </div>
 
-打击乐是乐队的骨架，掌控整首乐曲的律动脉搏。社团内部由经验丰富的高年级社员开展义务教学，从握鼓棒姿势、基础节拍、节奏型练习，到流行、摇滚、国风改编曲目合奏，循序渐进带领每一位社员成长。我们拥有排练教室，提供部分公用打击乐器，每周设置固定排练练习时段。社团积极参与校园晚会、音乐节、迎新汇演等各类舞台演出，也会组织内部即兴jam交流活动。在这里你不止学习打击乐技艺，更可以认识一群同样热爱节奏的伙伴，释放青春活力，用鼓点奏响属于我们的乐章。
+    <section id="intro">
+        <h2>社团简介</h2>
+        <p>校园打击乐社是我校专注节奏艺术的活力音乐社团，涵盖架子鼓、卡洪鼓、康加鼓、小军鼓、沙锤、三角铁等多种打击乐器。无论你是完全零基础，从未握过鼓棒，还是拥有一定演奏功底，只要你热爱节奏音乐，向往鼓点迸发的力量，都欢迎加入打击乐社。打击乐被称为乐队的骨架，掌控整首乐曲律动脉搏。社团内部由经验丰富的高年级社员提供免费帮带教学，从握棒姿势、基础节拍、四分八分音符基础节奏型，到流行摇滚、国风改编曲目合奏，循序渐进带每一位新人入门。社团拥有专用排练教室，提供公用打击乐器设备，每周设置固定练习时段。社团活跃于学校迎新晚会、校园音乐节、文艺汇演等各大舞台，同时经常举办内部即兴Jam交流会。很多同学会担心自己手脚不协调、不懂乐理，在打击乐社这些都不是门槛。我们教学从零基础起步，一点点拆解节奏，练习氛围轻松热烈。课业压力大的时候敲击鼓面是绝佳的情绪释放；站在舞台上敲击鼓点，能够收获满满的成就感。在这里，不止学到打击乐演奏技术，更能结识一群同样热爱节奏的同好伙伴，用铿锵鼓点奏响属于我们的青春乐章。我们不追求技术有多高超，我们追求热爱与陪伴，期待每一个喜欢节奏的你来到打击乐社，一起感受鼓点震动带来的热血与感动。</p>
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
+    </section>
 
-很多同学担心自己没有乐理基础、手脚不协调，完全不用顾虑。社团教学从最基础的节拍开始，从零开始手把手带练。日常练习氛围轻松欢乐，没有严苛门槛。闲暇的时候，社员会聚在一起玩即兴打击乐游戏，分享好听的鼓曲，拆解热门歌曲的鼓点编排。
-
-社团不仅仅是练习乐器的地方，更是课余生活的精神角落。学业压力大的时候，敲击鼓面可以释放情绪；舞台登台时，万众瞩目之下的鼓点，会带给你满满的成就感。如果你向往热烈的节奏，渴望站上舞台，期待找到同好，打击乐社期待你的到来。</p>
-    <div class="back-top"><a href="#top">🔝返回顶部</a></div>
-</section>
-
-<section id="activity">
-    <h2>活动安排</h2>
-    <!--3.跨4列表格，标题占4列；新成员见面会、打击乐公开课同一教室-->
-    <table>
-        <tr>
-            <th colspan="4">打击乐社 2026 年春季学期活动安排表</th>
-        </tr>
-        <tr class="center">
-            <td>活动名称</td>
-            <td>活动时间</td>
-            <td>活动地点</td>
-            <td>负责人</td>
-        </tr>
-        <tr>
-            <td>新成员见面会</td>
-            <td>第2周周五晚19:00</td>
-            <td>学生活动中心排练室405</td>
-            <td>张同学</td>
-        </tr>
-        <tr>
-            <td>打击乐基础教学公开课</td>
-            <td>第3周周六下午14:30</td>
-            <td>学生活动中心排练室405</td>
-            <td>李同学</td>
-        </tr>
-        <tr>
-            <td>校园音乐节合奏排练</td>
-            <td>每周二、周四晚上</td>
-            <td>学生活动中心排练室405</td>
-            <td>王同学</td>
-        </tr>
-        <tr>
-            <td>期末打击乐专场汇演</td>
-            <td>第16周周六晚</td>
-            <td>大学生活动中心大礼堂</td>
-            <td>赵同学</td>
-        </tr>
-    </table>
-    <div class="back-top"><a href="#top">🔝返回顶部</a></div>
-</section>
-
-<section id="show">
-    <h2>风采展示</h2>
-    <!--4.图片，点击跳转club_intro.html-->
-    <a href="club_intro.html">
-        <img src="drum.jpg" alt="打击乐社日常演奏" width="600">
-    </a>
-    <br>
-    <p>社员排练、登台演出、即兴合奏瞬间</p>
-    <!--5.embed导入mp4视频-->
-    <embed src="drum.mp4" width="600" height="340">
-    <div class="back-top"><a href="#top">🔝返回顶部</a></div>
-</section>
-
-<section id="story">
-    <h2>社员故事</h2>
-    <p>还记得刚入大一的时候，我完全没有任何乐器基础，只是听歌的时候特别被鼓点吸引。高考结束之后我就很想学习架子鼓，但一直没有机会系统学习。开学百团大战路过打击乐社摊位，听见里面传来热烈的节奏，我鼓起勇气报了名。
-
-最开始练习的时候，手脚总是配合错乱，简单的节拍都要反复练习很久，一度很挫败。社团的学长学姐非常耐心，会拆分每一小节节奏，陪着我们一遍一遍慢练，鼓励我们不要急于求成。每周的练习室，大家互相纠错、互相陪伴，从最基础的四分音符、八分音符，慢慢练习加花、填充节奏。
-
-经过一学期练习，我第一次站上校园晚会舞台，和乐队伙伴一起完成一首摇滚曲目。聚光灯亮起，双手落下鼓槌，全场跟着鼓点摇晃，那一刻所有反复练习的疲惫全部都消散。
-
-社团不只有枯燥练习，课余我们会聚在一起即兴玩打击乐，拿卡洪鼓、沙锤随便玩，哪怕技术普通，也可以享受节奏带来的快乐。有的社员之前学过别的乐器，有的社员完全零基础，大家没有高低之分，只因为热爱节奏相聚。
-
-在这里，我们收获的不只是打鼓的技术，更是一群志同道合的好朋友。课业繁重的时候，来排练室敲一会鼓，所有压力都得到释放；遇到演出，大家一起熬夜排练，互相打气。很多原本内向的同学，在一次次排练登台之后变得更加自信大方。
-
-如果你心里也藏着一份对节奏的热爱，不要害怕零基础。在这里，鼓棒交给你，舞台留给你，欢迎来到打击乐社，和我们一起敲出热烈青春节拍。</p>
-    <div class="back-top"><a href="#top">🔝返回顶部</a></div>
-</section>
-
-<section id="form">
-    <h2>在线报名</h2>
-    <!--7 报名表全部放在table里面，10项表单-->
-    <form>
+    <section id="activity">
+        <h2>活动安排</h2>
+        <!--3.表格：标题跨4列，第二行居中，两个活动同一教室-->
         <table>
             <tr>
-                <td>姓名：</td>
-                <td><input type="text" name="username"></td>
+                <th colspan="4">打击乐社 2026 年春季学期活动安排表</th>
+            </tr>
+            <tr class="center-row">
+                <td>活动名称</td>
+                <td>活动时间</td>
+                <td>活动地点</td>
+                <td>负责人</td>
             </tr>
             <tr>
-                <td>性别：</td>
-                <td>
-                    <input type="radio" name="gender" value="男">男
-                    <input type="radio" name="gender" value="女">女
-                </td>
+                <td>新成员见面会</td>
+                <td>第2周 周五19:00</td>
+                <td>学生活动中心排练室405</td>
+                <td>王学长</td>
             </tr>
             <tr>
-                <td>出生日期：</td>
-                <td>
-                    年<input type="text" name="year" size="4">
-                    月<input type="text" name="month" size="2">
-                    日<input type="text" name="day" size="2">
-                </td>
+                <td>打击乐基础教学公开课</td>
+                <td>第3周 周六14:30</td>
+                <td>学生活动中心排练室405</td>
+                <td>李学姐</td>
             </tr>
             <tr>
-                <td>手机号码：</td>
-                <td><input type="text" name="phone"></td>
+                <td>音乐节合奏日常排练</td>
+                <td>每周二、周四晚18:30</td>
+                <td>学生活动中心排练室405</td>
+                <td>张同学</td>
             </tr>
             <tr>
-                <td>邮箱：</td>
-                <td><input type="text" name="email"></td>
-            </tr>
-            <tr>
-                <td>是否有打击乐乐器基础：</td>
-                <td>
-                    <input type="radio" name="base" value="有">有
-                    <input type="radio" name="base" value="无">无
-                </td>
-            </tr>
-            <tr>
-                <td>兴趣方向（多选）：</td>
-                <td>
-                    <input type="checkbox" name="hobby" value="架子鼓">架子鼓
-                    <input type="checkbox" name="hobby" value="卡洪鼓">卡洪鼓
-                    <input type="checkbox" name="hobby" value="康加鼓">康加鼓
-                    <input type="checkbox" name="hobby" value="打击乐合奏">打击乐合奏
-                </td>
-            </tr>
-            <tr>
-                <td>年级：</td>
-                <td>
-                    <select name="grade">
-                        <option>大一</option>
-                        <option>大二</option>
-                        <option>大三</option>
-                        <option>大四</option>
-                        <option>研究生</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>自我介绍：</td>
-                <td><textarea name="intro" placeholder="请简单介绍自己、以及加入打击乐社的理由……"></textarea></td>
-            </tr>
-            <tr>
-                <td>是否服从社团活动安排：</td>
-                <td>
-                    <input type="radio" name="arrange" value="是">是
-                    <input type="radio" name="arrange" value="否">否
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" value="提交报名">
-                    <input type="reset" value="重置表单">
-                </td>
+                <td>春季打击乐专场汇演</td>
+                <td>第15周 周六晚19点</td>
+                <td>大学生活动中心大礼堂</td>
+                <td>赵同学</td>
             </tr>
         </table>
-    </form>
-    <div class="back-top"><a href="#top">🔝返回顶部</a></div>
-</section>
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
+    </section>
 
+    <section id="show">
+        <h2>风采展示</h2>
+        <!--4.图片点击跳转club_intro.html-->
+        <a href="club_intro.html">
+            <img src="drum.jpg" alt="打击乐社员排练演奏">
+        </a>
+        <p>📷点击图片查看社团活动详情</p>
+        <br>
+        <!--5.embed插入mp4视频-->
+        <embed src="drum.mp4" width="660" height="370">
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
+    </section>
+
+    <section id="story">
+        <h2>社员故事</h2>
+        <p>还记得大一刚入学的时候，我对打击乐完全一窍不通，只是听歌的时候，总是会被歌曲里面强劲的鼓点深深吸引。高考结束之后就很想学习架子鼓，但是一直没有机会系统学习。百团大战的时候路过打击乐社的摊位，教室里面传来热烈、振奋的鼓点，我鼓起勇气报名加入社团。刚开始练习的时候，手脚总是很难协调，最简单的基础节拍都需要反复练习，那段时间我一度觉得自己是不是不适合打击乐。但是社团的学长学姐十分耐心，会把节奏拆分成一小段一小段，陪着我们放慢速度一遍一遍练习，不断给予我们鼓励，告诉我们不要急于求成。每周排练室里面，大家互相纠错、互相陪伴，从四分音符、八分音符慢慢练习，学习加花、节奏填充。经过整整一个学期坚持练习，我第一次站上校园晚会的舞台，和乐队伙伴共同完成一首摇滚曲目。聚光灯打在鼓组上，鼓槌落下，全场跟着鼓点晃动，那一刻所有反复练习的疲惫全部烟消云散。社团的生活不只有枯燥重复的基本功练习，课余我们经常开展即兴打击乐小游戏，拿起卡洪鼓、沙锤就可以玩起来，技术好坏不重要，享受节奏才最重要。社团里有的社员拥有多年乐器功底，也有大量和我一样零基础入门的同学，在这里没有技术等级的隔阂，大家因为热爱节奏相聚于此。在这里收获的不只是打鼓的技巧，更是一群志同道合的好朋友。学业压力繁重的时候，来到排练室敲击一会鼓，内心压力就会得到释放；临近演出的时候，所有人一起熬夜排练，彼此互相打气。很多原本内向腼腆的同学，经过一次次排练登台之后，变得更加自信开朗。如果你心中同样向往热烈的鼓点，千万不要被零基础吓退。鼓棒可以交给你，舞台留给你，欢迎来到打击乐社，和我们一起敲出属于青春的滚烫节拍。</p>
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
+    </section>
+
+    <section id="apply">
+        <h2>在线报名</h2>
+        <!--7 全部表单放在table内，10项表单要求全部实现-->
+        <form>
+            <table>
+                <tr>
+                    <td>①姓名：</td>
+                    <td><input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <td>②性别：</td>
+                    <td>
+                        <input type="radio" name="sex" value="男">男
+                        <input type="radio" name="sex" value="女">女
+                    </td>
+                </tr>
+                <tr>
+                    <td>③出生日期：</td>
+                    <td>
+                        年：<input type="text" name="birth_year" size="4">
+                        月：<input type="text" name="birth_month" size="2">
+                        日：<input type="text" name="birth_day" size="2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>④手机号码：</td>
+                    <td><input type="text" name="phone"></td>
+                </tr>
+                <tr>
+                    <td>邮箱：</td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td>⑤是否有打击乐乐器基础：</td>
+                    <td>
+                        <input type="radio" name="has_base" value="yes">有
+                        <input type="radio" name="has_base" value="no">无
+                    </td>
+                </tr>
+                <tr>
+                    <td>⑥兴趣方向（可多选）：</td>
+                    <td>
+                        <input type="checkbox" name="interest" value="架子鼓">架子鼓
+                        <input type="checkbox" name="interest" value="卡洪鼓">卡洪鼓
+                        <input type="checkbox" name="interest" value="康加鼓">康加鼓
+                        <input type="checkbox" name="interest" value="小军鼓">小军鼓
+                        <input type="checkbox" name="interest" value="合奏演出">合奏演出
+                    </td>
+                </tr>
+                <tr>
+                    <td>⑦年级：</td>
+                    <td>
+                        <select name="grade">
+                            <option>大一</option>
+                            <option>大二</option>
+                            <option>大三</option>
+                            <option>大四</option>
+                            <option>研究生</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>⑧自我介绍：</td>
+                    <td><textarea name="self_desc" placeholder="请简单介绍自己、以及加入打击乐社的理由……"></textarea></td>
+                </tr>
+                <tr>
+                    <td>⑨是否服从社团活动安排：</td>
+                    <td>
+                        <input type="radio" name="obey" value="yes">是
+                        <input type="radio" name="obey" value="no">否
+                    </td>
+                </tr>
+                <tr>
+                    <td>⑩操作按钮</td>
+                    <td>
+                        <input type="submit" value="提交报名">
+                        <input type="reset" value="重置表单">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div class="back-top"><a href="#top">🔝 返回顶部</a></div>
+    </section>
 </body>
 </html>
