@@ -63,14 +63,13 @@ a{color:var(--cinnabar);text-decoration:none}
 .nav a:hover{color:var(--cinnabar)}
 .nav a+a::before{content:"·";color:var(--line);margin-right:8px}
 
-/* ===== 首屏横幅【无图也能正常显示文字】 ===== */
+/* ===== 首屏：横幅背景图 + 琴弦 ===== */
 .hero{
   position:relative;overflow:hidden;
   padding:72px 20px 56px;
-  /* 图片缺失时稳定显示底色，不会空白 */
   background:
     linear-gradient(180deg, rgba(20,18,16,.55) 0%, rgba(40,36,30,.45) 55%, rgba(60,54,46,.4) 100%),
-    #7c705e;
+    url("hero-banner.jpg") center/cover no-repeat;
   color:#f1e9d8;
 }
 .strings{position:absolute;inset:0;pointer-events:none}
@@ -91,10 +90,7 @@ a{color:var(--cinnabar);text-decoration:none}
 .hero-inner{position:relative;max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
 .hero-kicker{font-size:12px;letter-spacing:.42em;color:#b9a785}
 .hero-title{
-  font-size:56px;
-  line-height:1.3;
-  letter-spacing:.14em;
-  font-weight:700;
+  font-size:44px;line-height:1.25;letter-spacing:.12em;font-weight:700;
   color:#f6eedc;
 }
 .hero-title span{display:block;font-size:15px;letter-spacing:.34em;color:#bfa87f;margin-top:10px;font-weight:400}
@@ -118,7 +114,7 @@ a{color:var(--cinnabar);text-decoration:none}
 .prose strong{color:var(--ink);font-weight:700}
 .note{
   margin-top:18px;padding:12px 14px;border:1px solid var(--line);
-  background:rgba(236,227,209,.5);font-size13.5px;line-height:1.9;color:var(--ink-soft);
+  background:rgba(236,227,209,.5);font-size:13.5px;line-height:1.9;color:var(--ink-soft);
 }
 .note b{color:var(--cinnabar);font-weight:400}
 
@@ -156,81 +152,18 @@ table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
 .room{color:var(--jade);font-size:13px}
 .table-cap{font-size:12.5px;color:#7b7160;letter-spacing:.04em;margin-bottom:2px}
 
-/* ===== 风采轮播【无图片时显示文字占位框】 ===== */
-.slider-wrap{
-  position:relative;
-  max-width:860px;
-  margin:20px auto 8px;
-  border:1px solid #b7a98c;
-  background:#1c1916;
-  overflow:hidden;
-}
-.slider{
-  overflow:hidden;
-}
-.slider-track{
-  display:flex;
-  transition:transform .5s ease;
-}
-.slide{
-  min-width:100%;
-  margin:0;
-  position:relative;
-  height:460px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:20px;
-}
-.slide figcaption{
-  position:absolute;
-  left:0;right:0;bottom:0;
-  background:rgba(0,0,0,.45);
-  color:#f6eedc;
-  font-size:14px;
-  padding:10px 14px;
-  letter-spacing:.08em;
-}
-.slider-arrow{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:1px solid #d6b86c;
-  background:rgba(0,0,0,.35);
-  color:#f6eedc;
-  font-size:22px;
-  cursor:pointer;
-  z-index:3;
-}
-.slider-arrow:hover{
-  background:#9c3a2e;
-  border-color:#9c3a2e;
-}
-.slider-prev{left:12px}
-.slider-next{right:12px}
+/* ===== 风采：四张图 ===== */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 8px}
+.figure{margin:0}
+.figure a{display:block;position:relative;overflow:hidden;border:1px solid #b7a98c;background:#e8dfcc}
+.figure img{display:block;width:100%;height:220px;object-fit:cover;transition:transform .5s ease,filter .5s ease}
+.figure a:hover img{transform:scale(1.03);filter:saturate(1.08)}
+.fig-cap{font-size:12.5px;color:#7b7160;margin-top:8px;letter-spacing:.04em}
+.fig-cap span{color:var(--cinnabar)}
 
-.slider-dots{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:14px;
-}
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:#c9b89c;
-  cursor:pointer;
-  transition:background .3s ease, transform .3s ease;
-}
-.dot.active{
-  background:#9c3a2e;
-  transform:scale(1.2);
-}
+.video-block{margin:22px 0 4px}
+.embed-frame{position:relative;border:1px solid #b7a98c;background:#1c1916;padding:6px}
+.embed-frame embed{display:block;width:100%;height:auto;aspect-ratio:16/9}
 
 /* ===== 故事 ===== */
 .story{margin-bottom:26px;padding-left:20px;position:relative}
@@ -292,11 +225,12 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
 @media (min-width:760px){
   body{font-size:15.5px}
   .hero{padding:90px 40px 72px}
-  .hero-title{font-size:76px}
+  .hero-title{font-size:62px}
   .section{padding:68px 0 56px}
   .sec-head h2{font-size:27px}
   .prose p{margin-bottom:16px}
   table.form-table th{width:170px}
+  .figure img{height:260px}
 }
 @media (max-width:420px){
   .play-hint{display:none}
@@ -305,7 +239,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   .hero-title{font-size:34px}
   table.form-table th{width:96px;font-size:12.5px;padding:8px}
   table.form-table td{padding:8px}
-  .slide{height:300px;}
+  .gallery{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -319,8 +253,8 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   </button>
   <span class="play-hint">点左键听社歌</span>
 
-  <!-- 图标占位，没有图片也不会崩 -->
-  <div class="nav-icon">古</div>
+  <!-- 古筝社团图标 -->
+  <img src="guzheng-icon.png" alt="古筝社团图标" class="nav-icon">
 
   <div class="brand">古筝社<em>·</em>弦音</div>
   <nav class="nav">
@@ -332,10 +266,9 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   </nav>
 </header>
 
-<!-- ✅ 修复：audio闭合标签 -->
-<audio id="bgMusic" src="theme.mp3" preload="auto" loop>
+<audio id="bgMusic" src="theme.mp3" preload="auto" loop></audio>
 
-<!-- ===== 首屏 ===== -->
+<!-- ===== 首屏：顶部背景图 ===== -->
 <section class="hero">
   <div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="hero-inner">
@@ -435,59 +368,49 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
     <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
 
-  <!-- ===== 三、风采展示：可左右点击切换轮播 ===== -->
+  <!-- ===== 三、风采展示：四张图 ===== -->
   <section class="section" id="show">
     <div class="sec-head"><span class="sec-no">三</span><h2>社团风采展示</h2><span class="rule"></span></div>
     <div class="prose">
-      <p>下面四张照片记录了古筝社上学期的日常练琴、春日雅集、合奏排练与专场演出。点击左右箭头可切换查看不同活动瞬间。</p>
+      <p>下面四张照片记录了古筝社上学期的日常练琴、春日雅集、合奏排练与专场演出。点击任意图片可进入活动介绍页，查看当时的排练细节与社员笔记。</p>
     </div>
 
-    <div class="slider-wrap">
-      <button class="slider-arrow slider-prev" id="prevBtn" aria-label="上一张">‹</button>
+    <div class="gallery">
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
+          <img src="show1.jpg" alt="古筝社日常练琴">
+        </a>
+        <p class="fig-cap">周四晚练琴现场 · <span>点击查看详情</span></p>
+      </figure>
 
-      <div class="slider" id="slider">
-        <div class="slider-track" id="sliderTrack">
-          <figure class="slide">
-            练琴现场
-            <figcaption>周四晚练琴现场</figcaption>
-          </figure>
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
+          <img src="show2.jpg" alt="春日雅集活动">
+        </a>
+        <p class="fig-cap">春日雅集草坪演奏 · <span>点击查看详情</span></p>
+      </figure>
 
-          <figure class="slide">
-            春日雅集
-            <figcaption>春日雅集草坪演奏</figcaption>
-          </figure>
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
+          <img src="show3.jpg" alt="合奏排练">
+        </a>
+        <p class="fig-cap">分声部合奏排练 · <span>点击查看详情</span></p>
+      </figure>
 
-          <figure class="slide">
-            合奏排练
-            <figcaption>分声部合奏排练</figcaption>
-          </figure>
-
-          <figure class="slide">
-            专场演出
-            <figcaption>校园民乐专场演出</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <button class="slider-arrow slider-next" id="nextBtn" aria-label="下一张">›</button>
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
+          <img src="show4.jpg" alt="校园民乐专场演出">
+        </a>
+        <p class="fig-cap">校园民乐专场演出 · <span>点击查看详情</span></p>
+      </figure>
     </div>
 
-    <div class="slider-dots" id="sliderDots">
-      <span class="dot active" data-index="0"></span>
-      <span class="dot" data-index="1"></span>
-      <span class="dot" data-index="2"></span>
-      <span class="dot" data-index="3"></span>
-    </div>
-
-    <!-- 注释掉视频，避免找不到文件卡死页面 -->
-    <!--
     <div class="video-block">
       <p class="table-cap">社团宣传短片（约 5 秒，自动循环播放）</p>
       <div class="embed-frame">
         <embed src="club-intro.mp4" type="video/mp4" width="860" height="484" autostart="true" loop="true">
       </div>
     </div>
-    -->
 
     <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
@@ -679,32 +602,6 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
       introBody.classList.add('is-open');
       toggleBtn.textContent = '收起 ↑';
     }
-  });
-
-  // 风采轮播切换
-  const sliderTrack = document.getElementById('sliderTrack');
-  const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let currentIndex = 0;
-  const totalSlides = 4;
-
-  function goToSlide(index) {
-    if (index < 0) index = totalSlides - 1;
-    if (index >= totalSlides) index = 0;
-    currentIndex = index;
-    sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
-    });
-  }
-
-  prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
-  nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      goToSlide(Number(dot.dataset.index));
-    });
   });
 
   // 表单提交演示
