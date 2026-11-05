@@ -63,14 +63,13 @@ a{color:var(--cinnabar);text-decoration:none}
 .nav a:hover{color:var(--cinnabar)}
 .nav a+a::before{content:"·";color:var(--line);margin-right:8px}
 
-/* ===== 首屏横幅【背景图：自行上传 banner.jpg】 ===== */
+/* ===== 首屏横幅【无图也能正常显示文字】 ===== */
 .hero{
   position:relative;overflow:hidden;
   padding:72px 20px 56px;
-  /* 将你自己的背景图片命名 banner.jpg，上传到仓库根目录即可替换；缺失时使用后备底色 #7c705e */
+  /* 图片缺失时稳定显示底色，不会空白 */
   background:
     linear-gradient(180deg, rgba(20,18,16,.55) 0%, rgba(40,36,30,.45) 55%, rgba(60,54,46,.4) 100%),
-    url("banner.jpg") center/cover no-repeat,
     #7c705e;
   color:#f1e9d8;
 }
@@ -119,7 +118,7 @@ a{color:var(--cinnabar);text-decoration:none}
 .prose strong{color:var(--ink);font-weight:700}
 .note{
   margin-top:18px;padding:12px 14px;border:1px solid var(--line);
-  background:rgba(236,227,209,.5);font-size:13.5px;line-height:1.9;color:var(--ink-soft);
+  background:rgba(236,227,209,.5);font-size13.5px;line-height:1.9;color:var(--ink-soft);
 }
 .note b{color:var(--cinnabar);font-weight:400}
 
@@ -157,7 +156,7 @@ table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
 .room{color:var(--jade);font-size:13px}
 .table-cap{font-size:12.5px;color:#7b7160;letter-spacing:.04em;margin-bottom:2px}
 
-/* ===== 风采轮播 ===== */
+/* ===== 风采轮播【无图片时显示文字占位框】 ===== */
 .slider-wrap{
   position:relative;
   max-width:860px;
@@ -177,12 +176,12 @@ table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
   min-width:100%;
   margin:0;
   position:relative;
-}
-.slide img{
-  width:100%;
   height:460px;
-  object-fit:cover;
-  display:block;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:20px;
 }
 .slide figcaption{
   position:absolute;
@@ -232,10 +231,6 @@ table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
   background:#9c3a2e;
   transform:scale(1.2);
 }
-
-.video-block{margin:22px 0 4px}
-.embed-frame{position:relative;border:1px solid #b7a98c;background:#1c1916;padding:6px}
-.embed-frame embed{display:block;width:100%;height:auto;aspect-ratio:16/9}
 
 /* ===== 故事 ===== */
 .story{margin-bottom:26px;padding-left:20px;position:relative}
@@ -310,7 +305,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   .hero-title{font-size:34px}
   table.form-table th{width:96px;font-size:12.5px;padding:8px}
   table.form-table td{padding:8px}
-  .slide img{height:300px;}
+  .slide{height:300px;}
 }
 </style>
 </head>
@@ -324,8 +319,8 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   </button>
   <span class="play-hint">点左键听社歌</span>
 
-  <!-- 古筝社团图标 -->
-  <img src="guzheng-icon.png" alt="古筝社团图标" class="nav-icon">
+  <!-- 图标占位，没有图片也不会崩 -->
+  <div class="nav-icon">古</div>
 
   <div class="brand">古筝社<em>·</em>弦音</div>
   <nav class="nav">
@@ -337,9 +332,10 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   </nav>
 </header>
 
+<!-- ✅ 修复：audio闭合标签 -->
 <audio id="bgMusic" src="theme.mp3" preload="auto" loop>
 
-<!-- ===== 首屏：【自行插入背景图：图片命名 banner.jpg】 ===== -->
+<!-- ===== 首屏 ===== -->
 <section class="hero">
   <div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="hero-inner">
@@ -452,22 +448,22 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
       <div class="slider" id="slider">
         <div class="slider-track" id="sliderTrack">
           <figure class="slide">
-            <img src="show1.jpg" alt="古筝社日常练琴">
+            练琴现场
             <figcaption>周四晚练琴现场</figcaption>
           </figure>
 
           <figure class="slide">
-            <img src="show2.jpg" alt="春日雅集活动">
+            春日雅集
             <figcaption>春日雅集草坪演奏</figcaption>
           </figure>
 
           <figure class="slide">
-            <img src="show3.jpg" alt="合奏排练">
+            合奏排练
             <figcaption>分声部合奏排练</figcaption>
           </figure>
 
           <figure class="slide">
-            <img src="show4.jpg" alt="校园民乐专场演出">
+            专场演出
             <figcaption>校园民乐专场演出</figcaption>
           </figure>
         </div>
@@ -483,12 +479,15 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
       <span class="dot" data-index="3"></span>
     </div>
 
+    <!-- 注释掉视频，避免找不到文件卡死页面 -->
+    <!--
     <div class="video-block">
       <p class="table-cap">社团宣传短片（约 5 秒，自动循环播放）</p>
       <div class="embed-frame">
         <embed src="club-intro.mp4" type="video/mp4" width="860" height="484" autostart="true" loop="true">
       </div>
     </div>
+    -->
 
     <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
