@@ -1,337 +1,617 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>校园古筝社 · 弦音雅集</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #f3efe4;
-            font-family: "SimSun", "STSong", serif;
-            color: #332c24;
-        }
-        /* 顶部导航 */
-        .top-nav-bar {
-            background-color: #e8e2d3;
-            display: flex;
-            align-items: center;
-            padding: 12px 24px;
-            gap:32px;
-        }
-        .logo-text{
-            font-size:20px;
-            font-weight:bold;
-        }
-        .top-nav-bar a{
-            color:#332c24;
-            text-decoration:none;
-            font-size:17px;
-        }
-        .search-box{
-            margin-left:auto;
-            border:1px solid #aaa;
-            padding:4px 8px;
-            border-radius:12px;
-        }
-        /* 横幅主视觉区（参考省博banner） */
-        .banner-wrap{
-            position:relative;
-            width:100%;
-            height:420px;
-            background: url("banner.jpg") center/cover no-repeat;
-            display:flex;
-            align-items:center;
-            overflow:hidden;
-        }
-        .guzheng-left{
-            width:360px;
-            height:360px;
-            background:url("guzheng.jpg") center/contain no-repeat;
-            position:absolute;
-            left:20px;
-            top:30px;
-        }
-        .banner-right-text{
-            position:absolute;
-            right:60px;
-            top:40px;
-        }
-        .banner-right-text .big-title{
-            font-size:90px;
-            color:#2c241c;
-            line-height:1.1;
-        }
-        .banner-center-info{
-            position:absolute;
-            left:42%;
-            top:60px;
-            text-align:center;
-        }
-        .banner-center-info h3{
-            font-size:24px;
-            margin-bottom:12px;
-        }
-        .banner-center-info p{
-            font-size:15px;
-            line-height:1.7;
-        }
-        /* 功能按钮组：导览、路线、地图、须知、全景、报名 */
-        .func-group{
-            display:flex;
-            gap:16px;
-            justify-content:center;
-            margin-top:30px;
-        }
-        .func-btn{
-            width:90px;
-            text-align:center;
-            font-size:14px;
-        }
-        .func-btn .icon{
-            font-size:32px;
-            margin-bottom:6px;
-        }
-        /* 典藏书画轮播板块 */
-        .section-title{
-            text-align:center;
-            font-size:24px;
-            margin:40px 0 20px;
-        }
-        .scroll-wrap{
-            width:90%;
-            margin:0 auto;
-            display:flex;
-            align-items:center;
-            gap:12px;
-        }
-        .arrow{
-            font-size:36px;
-            cursor:pointer;
-            color:#776a58;
-        }
-        .pic-row{
-            flex:1;
-            display:flex;
-            gap:10px;
-            overflow:hidden;
-        }
-        .pic-item{
-            height:220px;
-            flex-shrink:0;
-            border:1px solid #c8b89e;
-        }
-        .long-pic{
-            width:90%;
-            height:160px;
-            margin:30px auto;
-            display:block;
-            border:1px solid #c8b89e;
-        }
-        /* 底部页脚 */
-        footer{
-            background:#e8e2d3;
-            text-align:center;
-            padding:24px;
-            margin-top:30px;
-            font-size:14px;
-        }
-        /* 下方内容板块（简介、活动、风采、故事、报名） */
-        .content-container{
-            width:90%;
-            margin:40px auto;
-        }
-        .block{
-            background:#fffaf0;
-            border:1px solid #c9b89c;
-            padding:28px;
-            margin-bottom:24px;
-        }
-        .block h2{
-            color:#772222;
-            border-left:5px solid #992c2c;
-            padding-left:12px;
-            margin-bottom:16px;
-        }
-        table{
-            width:100%;
-            border-collapse: collapse;
-            margin:16px 0;
-        }
-        table th,table td{
-            border:1px solid #b8a78b;
-            padding:10px;
-            text-align:center;
-        }
-        table th{
-            background-color:#e9ddc8;
-        }
-        .form-item{
-            margin:12px 0;
-        }
-        input,textarea{
-            padding:8px;
-            width:320px;
-            border:1px solid #b8a78b;
-            background:#fffaf0;
-            font-family: serif;
-        }
-        button{
-            background:#992c2c;
-            color:white;
-            border:none;
-            padding:10px 26px;
-            font-size:16px;
-            cursor:pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>校园古筝社 2026 春季招新</title>
+<style>
+:root{
+  --ink:#25211d;
+  --ink-soft:#4a443c;
+  --paper:#f6f1e5;
+  --paper-2:#ece3d1;
+  --line:#cdc0a6;
+  --cinnabar:#9c3a2e;
+  --jade:#40614f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 12% 8%, rgba(207,190,160,.35), transparent 58%),
+    radial-gradient(circle at 88% 92%, rgba(196,176,146,.28), transparent 60%),
+    var(--paper);
+  color:var(--ink);
+  font-family:"Songti SC","STSong","Source Han Serif SC","Noto Serif CJK SC","SimSun",serif;
+  font-size:15px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--cinnabar);text-decoration:none}
+
+/* ===== 顶部栏 ===== */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;
+  background:rgba(246,241,229,.94);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(6px);
+}
+.play-btn{
+  flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  border:1px solid var(--cinnabar);background:transparent;color:var(--cinnabar);
+  cursor:pointer;transition:background .2s ease,color .2s ease;
+}
+.play-btn:hover{background:var(--cinnabar);color:var(--paper)}
+.play-btn svg{width:18px;height:18px;display:block}
+.play-hint{font-size:12px;letter-spacing:.06em;color:var(--ink-soft);white-space:nowrap}
+.nav-icon{
+  width:36px;height:36px;border-radius:50%;object-fit:cover;
+  border:1px solid var(--line);background:#fff;
+}
+.brand{
+  font-size:15px;letter-spacing:.16em;color:var(--ink);
+  padding-left:10px;border-left:1px solid var(--line);white-space:nowrap;
+}
+.brand em{font-style:normal;color:var(--cinnabar)}
+.nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:2px 0}
+.nav a{
+  font-size:13px;color:var(--ink-soft);padding:6px 9px;letter-spacing:.04em;
+}
+.nav a:hover{color:var(--cinnabar)}
+.nav a+a::before{content:"·";color:var(--line);margin-right:8px}
+
+/* ===== 首屏：横幅背景图 + 琴弦 ===== */
+.hero{
+  position:relative;overflow:hidden;
+  padding:72px 20px 56px;
+  background:
+    linear-gradient(180deg, rgba(20,18,16,.55) 0%, rgba(40,36,30,.45) 55%, rgba(60,54,46,.4) 100%),
+    url("hero-banner.jpg") center/cover no-repeat;
+  color:#f1e9d8;
+}
+.strings{position:absolute;inset:0;pointer-events:none}
+.strings i{
+  position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(232,214,180,.34) 12%,rgba(232,214,180,.34) 88%,transparent);
+}
+.strings i::after{
+  content:"";position:absolute;top:-5px;
+  width:9px;height:11px;border-radius:2px;
+  background:#8f7a55;box-shadow:0 0 0 1px rgba(0,0,0,.25);
+}
+.strings i:nth-child(1){top:22%}.strings i:nth-child(1)::after{left:16%}
+.strings i:nth-child(2){top:37%}.strings i:nth-child(2)::after{left:31%}
+.strings i:nth-child(3){top:52%}.strings i:nth-child(3)::after{left:44%}
+.strings i:nth-child(4){top:67%}.strings i:nth-child(4)::after{left:62%}
+.strings i:nth-child(5){top:82%}.strings i:nth-child(5)::after{left:78%}
+.hero-inner{position:relative;max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.hero-kicker{font-size:12px;letter-spacing:.42em;color:#b9a785}
+.hero-title{
+  font-size:44px;line-height:1.25;letter-spacing:.12em;font-weight:700;
+  color:#f6eedc;
+}
+.hero-title span{display:block;font-size:15px;letter-spacing:.34em;color:#bfa87f;margin-top:10px;font-weight:400}
+.hero-lead{max-width:34em;font-size:14px;line-height:2;color:#ded4c0}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12.5px;color:#b9a785;letter-spacing:.06em}
+.hero-meta b{color:#e3d5b7;font-weight:400}
+
+/* ===== 主体 ===== */
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+.section{padding:52px 0 44px;border-bottom:1px solid var(--line)}
+.section:last-of-type{border-bottom:none}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.sec-no{
+  font-size:13px;color:var(--cinnabar);letter-spacing:.22em;
+  border:1px solid var(--cinnabar);padding:1px 7px;line-height:1.7;
+}
+.sec-head h2{font-size:23px;letter-spacing:.14em;font-weight:700}
+.sec-head .rule{flex:1;height:1px;background:var(--line);transform:translateY(-6px)}
+.prose p{margin-bottom:14px;text-indent:2em;text-align:justify;color:var(--ink-soft)}
+.prose p:last-child{margin-bottom:0}
+.prose strong{color:var(--ink);font-weight:700}
+.note{
+  margin-top:18px;padding:12px 14px;border:1px solid var(--line);
+  background:rgba(236,227,209,.5);font-size:13.5px;line-height:1.9;color:var(--ink-soft);
+}
+.note b{color:var(--cinnabar);font-weight:400}
+
+/* ===== 可折叠简介 ===== */
+.intro-body{position:relative;overflow:hidden}
+.intro-short{display:block}
+.intro-full{display:none}
+.intro-body.is-open .intro-short{display:none}
+.intro-body.is-open .intro-full{display:block}
+.toggle-btn{
+  display:inline-block;margin-top:14px;color:var(--cinnabar);
+  border-bottom:1px dashed var(--cinnabar);cursor:pointer;font-size:14px;
+}
+.toggle-btn:hover{color:#7a2f24}
+
+/* ===== 表格 ===== */
+.table-scroll{overflow-x:auto;margin:18px 0 6px}
+table.schedule{
+  width:100%;min-width:560px;border-collapse:collapse;
+  font-size:13.5px;background:rgba(255,252,244,.6);
+}
+table.schedule th,table.schedule td{
+  border:1px solid var(--line);padding:10px 8px;text-align:center;vertical-align:middle;
+}
+table.schedule tr:first-child th{
+  font-size:15px;letter-spacing:.12em;color:var(--ink);
+  background:var(--paper-2);border-bottom:1px solid #a8977a;
+}
+table.schedule tr:nth-child(2) th{
+  font-weight:400;font-size:13px;color:var(--cinnabar);letter-spacing:.08em;
+  background:rgba(236,227,209,.35);
+}
+table.schedule td:first-child{text-align:left;padding-left:14px}
+table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
+.room{color:var(--jade);font-size:13px}
+.table-cap{font-size:12.5px;color:#7b7160;letter-spacing:.04em;margin-bottom:2px}
+
+/* ===== 风采：四张图 ===== */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 8px}
+.figure{margin:0}
+.figure a{display:block;position:relative;overflow:hidden;border:1px solid #b7a98c;background:#e8dfcc}
+.figure img{display:block;width:100%;height:220px;object-fit:cover;transition:transform .5s ease,filter .5s ease}
+.figure a:hover img{transform:scale(1.03);filter:saturate(1.08)}
+.fig-cap{font-size:12.5px;color:#7b7160;margin-top:8px;letter-spacing:.04em}
+.fig-cap span{color:var(--cinnabar)}
+
+.video-block{margin:22px 0 4px}
+.embed-frame{position:relative;border:1px solid #b7a98c;background:#1c1916;padding:6px}
+.embed-frame embed{display:block;width:100%;height:auto;aspect-ratio:16/9}
+
+/* ===== 故事 ===== */
+.story{margin-bottom:26px;padding-left:20px;position:relative}
+.story::before{content:"";position:absolute;left:0;top:8px;bottom:4px;width:1px;background:var(--line)}
+.story::after{content:"";position:absolute;left:-3px;top:12px;width:7px;height:7px;border-radius:50%;background:var(--cinnabar)}
+.story h3{font-size:16px;letter-spacing:.08em;margin-bottom:8px}
+.story .who{font-size:12.5px;color:#857a66;letter-spacing:.06em;margin-bottom:8px}
+.story p{color:var(--ink-soft);text-indent:2em;text-align:justify}
+
+/* ===== 报名表 ===== */
+form{margin-top:18px}
+table.form-table{width:100%;border-collapse:collapse;font-size:14px;background:rgba(255,252,244,.55)}
+table.form-table th,table.form-table td{border:1px solid var(--line);padding:10px 12px;vertical-align:middle}
+table.form-table th{
+  width:138px;text-align:right;font-weight:400;color:var(--ink);
+  background:rgba(236,227,209,.55);letter-spacing:.04em;font-size:13.5px;
+}
+table.form-table input[type=text],table.form-table input[type=email],
+table.form-table input[type=tel],table.form-table select,table.form-table textarea{
+  width:100%;max-width:420px;border:1px solid #c2b493;background:#fffdf6;
+  padding:7px 9px;font-size:14px;font-family:inherit;color:var(--ink);
+}
+table.form-table textarea{resize:vertical;min-height:96px;line-height:1.8}
+table.form-table input:focus,table.form-table select:focus,table.form-table textarea:focus{
+  outline:none;border-color:var(--cinnabar);box-shadow:0 0 0 2px rgba(156,58,46,.12)
+}
+.opt-row{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.opt{display:inline-flex;align-items:center;gap:6px;cursor:pointer;padding:2px 0;font-size:13.5px;color:var(--ink-soft)}
+.opt input{accent-color:var(--cinnabar);width:15px;height:15px}
+.date-cell{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.date-cell input{width:64px !important}
+.date-cell span{font-size:13px;color:#7b7160}
+.btn-row{text-align:center;padding:16px}
+.btn{
+  font-family:inherit;font-size:14.5px;letter-spacing:.1em;cursor:pointer;
+  padding:9px 30px;border:1px solid var(--cinnabar);background:transparent;color:var(--cinnabar);
+  transition:background .2s ease,color .2s ease;
+}
+.btn:hover{background:var(--cinnabar);color:#fffaf0}
+.btn.primary{background:var(--cinnabar);color:#fffaf0;margin-right:14px}
+.btn.primary:hover{background:#83302a}
+.req{color:var(--cinnabar)}
+
+/* ===== 返回顶部 ===== */
+.back-top-row{display:flex;justify-content:flex-end;margin-top:22px}
+.back-top{
+  display:inline-flex;align-items:center;gap:7px;font-size:12.5px;letter-spacing:.1em;
+  color:var(--ink-soft);border-bottom:1px solid var(--line);padding-bottom:2px;
+}
+.back-top:hover{color:var(--cinnabar);border-color:var(--cinnabar)}
+
+/* ===== 页脚 ===== */
+footer{
+  border-top:1px solid var(--line);padding:22px 18px 30px;text-align:center;
+  font-size:12px;color:#857a66;letter-spacing:.14em;
+}
+footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
+
+@media (min-width:760px){
+  body{font-size:15.5px}
+  .hero{padding:90px 40px 72px}
+  .hero-title{font-size:62px}
+  .section{padding:68px 0 56px}
+  .sec-head h2{font-size:27px}
+  .prose p{margin-bottom:16px}
+  table.form-table th{width:170px}
+  .figure img{height:260px}
+}
+@media (max-width:420px){
+  .play-hint{display:none}
+  .brand{font-size:14px;letter-spacing:.1em}
+  .nav a{font-size:12.5px;padding:5px 7px}
+  .hero-title{font-size:34px}
+  table.form-table th{width:96px;font-size:12.5px;padding:8px}
+  table.form-table td{padding:8px}
+  .gallery{grid-template-columns:1fr}
+}
+</style>
 </head>
-<body>
-    <!-- 顶部导航 -->
-    <div class="top-nav-bar">
-        <span class="logo-text">校园古筝社</span>
-        <a href="#intro">概况</a>
-        <a href="#activity">资讯</a>
-        <a href="#show">风采</a>
-        <a href="#story">社团故事</a>
-        <a href="#form">在线报名</a>
-        <div class="search-box">🔍 搜索</div>
+<body id="top">
+
+<!-- ===== 顶部栏：音乐播放键 + 古筝社团图标 + 五项跳转菜单 ===== -->
+<header class="topbar">
+  <button class="play-btn" id="playBtn" type="button" aria-label="播放或暂停背景音乐">
+    <svg id="iconPlay" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+    <svg id="iconPause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z" /></svg>
+  </button>
+  <span class="play-hint">点左键听社歌</span>
+
+  <!-- 古筝社团图标 -->
+  <img src="guzheng-icon.png" alt="古筝社团图标" class="nav-icon">
+
+  <div class="brand">古筝社<em>·</em>弦音</div>
+  <nav class="nav">
+    <a href="#intro">社团简介</a>
+    <a href="#activity">活动安排</a>
+    <a href="#show">风采展示</a>
+    <a href="#story">社员故事</a>
+    <a href="#form">在线报名</a>
+  </nav>
+</header>
+
+<audio id="bgMusic" src="theme.mp3" preload="auto" loop></audio>
+
+<!-- ===== 首屏：顶部背景图 ===== -->
+<section class="hero">
+  <div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="hero-inner">
+    <div class="hero-kicker">校园古筝社 · 2026 春季招新</div>
+    <h1 class="hero-title">弦音雅集<span>二十一根弦，等你来拨第一声</span></h1>
+    <p class="hero-lead">每周一次的琴房灯光、十几双按在弦上的手，还有一个空着的位子。零基础也收，琴我们也备好了。</p>
+    <div class="hero-meta">
+      <span>活动时间 <b>每周四 19:00—21:00</b></span>
+      <span>活动地点 <b>学生活动中心 民乐教室 302</b></span>
+      <span>招新对象 <b>全校在读学生，不限年级</b></span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- ===== 一、社团简介：可折叠 ===== -->
+  <section class="section" id="intro">
+    <div class="sec-head"><span class="sec-no">一</span><h2>社团简介</h2><span class="rule"></span></div>
+
+    <div class="prose intro-body" id="introBody">
+      <div class="intro-short">
+        <p>校园古筝社成立于 2013 年秋天，最初只是六个人、两台琴、一间借来的空教室。十二年过去，社团已经成为校内规模稳定的传统器乐社团之一，常年保持四十余名在册社员，累计带出过两百多位从零开始学琴的同学。</p>
+        <p>社团的定位很朴素：<strong>让想学古筝的人在校园里真的学会一首曲子。</strong>我们不挂靠任何商业机构，不收取学费，也不设"考核淘汰"，所有教学由高年级社员与特邀老师义务承担。</p>
+      </div>
+
+      <div class="intro-full">
+        <p>教学上我们采用三段式推进：<strong>第一阶段是技法与乐理</strong>，包括古筝各部名称、D 调定弦、勾、托、抹、挑、劈、大撮小撮、上下滑音、揉弦与按音，配合最基本的简谱识读，这一段通常需要四到六周；<strong>第二阶段是曲目</strong>，从《小星星》《茉莉花》这类短小曲目入手，逐步过渡到《渔舟唱晚》《浏阳河》《战台风》选段；<strong>第三阶段是合奏与舞台</strong>，学习分声部、听别人的节奏、控制音量与呼吸，最终在学期末的雅集或校园晚会上完整演出一首曲子。</p>
+        <p>曲目风格上，社团偏重传统筝曲，但也不排斥现代改编。近两年我们排过《沧海一声笑》的合奏版、把《青花瓷》的旋律改编成五声调式，也在迎新晚会上试过古筝与吉他、打击乐的混编。我们始终认为，古筝不是只能活在博物馆里的乐器，它可以和现在的生活发生关系。</p>
+        <p>乐器方面，社团备有六台教学用古筝（163cm 标准筝），全部来自历届社员捐赠与学校支持，初学者无需自购乐器，报名后按周轮换使用；琴房另配节拍器、谱架、备用指甲与调音扳手。社团活动场地固定在学生活动中心民乐教室 302，每周四晚固定开放，其余时间可凭社员证预约加练。</p>
+        <p>社团氛围是我们最在意的东西。这里没有"谁弹得更好"的排序，只有"你这周有没有碰琴"。有人一周练五天，有人只能在周末抽一个小时，都没关系。我们更愿意看到的是：一个原本不敢在人前出声的同学，在学期末能坐在琴前，把一首完整的曲子从头弹到尾，抬手，然后听见掌声。</p>
+        <p>如果你此前从未接触过任何乐器，担心自己"手笨""没天赋"，那正是我们最常见的社员画像；如果你已经考过级、想找一个能一起合奏、一起上台的地方，我们也需要你来带一带新人。古筝社不看起点，只看你愿不愿意坐下来，把手指放到弦上。</p>
+      </div>
+
+      <span class="toggle-btn" id="toggleIntro">展开全文 ↓</span>
     </div>
 
-    <!-- 主横幅区域，左侧古筝 -->
-    <div class="banner-wrap">
-        <div class="guzheng-left"></div>
-        <div class="banner-center-info">
-            <h3>弦音雅集 · 古筝社招新</h3>
-            <p>零基础可学，以筝会友，共赏国风古韵</p>
-            <p>活动时间：每周固定练琴日 | 地点：学生活动中心民乐教室</p>
-            <div class="func-group">
-                <div class="func-btn"><div class="icon">🗺️</div>导览</div>
-                <div class="func-btn"><div class="icon">🚌</div>交通路线</div>
-                <div class="func-btn"><div class="icon">📍</div>练琴地图</div>
-                <div class="func-btn"><div class="icon">📖</div>报名须知</div>
-                <div class="func-btn"><div class="icon">🔮</div>360°云赏筝</div>
-                <div class="func-btn"><div class="icon">📝</div>在线报名</div>
+    <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
+  </section>
+
+  <!-- ===== 二、活动安排 ===== -->
+  <section class="section" id="activity">
+    <div class="sec-head"><span class="sec-no">二</span><h2>本学期主要活动安排</h2><span class="rule"></span></div>
+    <div class="prose">
+      <p>本学期活动以"固基础、出成曲、上一次台"为主线安排。下表为学期整体排期，具体日期如遇学校统一调课或场地临时占用，会在社团群内提前三天通知并顺延。</p>
+    </div>
+    <div class="table-scroll">
+      <p class="table-cap">古筝社 2026 年春季学期活动安排表</p>
+      <table class="schedule">
+        <tr>
+          <th colspan="4">古筝社 2026 年春季学期活动安排表</th>
+        </tr>
+        <tr>
+          <th>活动名称</th>
+          <th>活动时间</th>
+          <th>活动地点</th>
+          <th>负责人</th>
+        </tr>
+        <tr>
+          <td>新成员见面会</td>
+          <td>3 月第 2 周 周五 19:00</td>
+          <td rowspan="2" class="room">学生活动中心<br>民乐教室 302</td>
+          <td>林晚</td>
+        </tr>
+        <tr>
+          <td>古筝基础教学公开课</td>
+          <td>3 月第 3 周 周六 14:00</td>
+          <td>苏清月</td>
+        </tr>
+        <tr>
+          <td>每周固定练琴日</td>
+          <td>每周四 19:00—21:00</td>
+          <td>民乐教室 302</td>
+          <td>各声部长</td>
+        </tr>
+        <tr>
+          <td>春日雅集·小型演奏会</td>
+          <td>4 月第 3 周 周日 15:00</td>
+          <td>图书馆前草坪</td>
+          <td>陈梓涵</td>
+        </tr>
+        <tr>
+          <td>合奏排练（分声部）</td>
+          <td>5 月每周二 18:30</td>
+          <td>民乐教室 302</td>
+          <td>周曼</td>
+        </tr>
+        <tr>
+          <td>校园民乐专场演出</td>
+          <td>6 月第 1 周 周六 19:00</td>
+          <td>大学生活动中心 礼堂</td>
+          <td>全体社员</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
+  </section>
+
+  <!-- ===== 三、风采展示：四张图 ===== -->
+  <section class="section" id="show">
+    <div class="sec-head"><span class="sec-no">三</span><h2>社团风采展示</h2><span class="rule"></span></div>
+    <div class="prose">
+      <p>下面四张照片记录了古筝社上学期的日常练琴、春日雅集、合奏排练与专场演出。点击任意图片可进入活动介绍页，查看当时的排练细节与社员笔记。</p>
+    </div>
+
+    <div class="gallery">
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
+          <img src="show1.jpg" alt="古筝社日常练琴">
+        </a>
+        <p class="fig-cap">周四晚练琴现场 · <span>点击查看详情</span></p>
+      </figure>
+
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
+          <img src="show2.jpg" alt="春日雅集活动">
+        </a>
+        <p class="fig-cap">春日雅集草坪演奏 · <span>点击查看详情</span></p>
+      </figure>
+
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
+          <img src="show3.jpg" alt="合奏排练">
+        </a>
+        <p class="fig-cap">分声部合奏排练 · <span>点击查看详情</span></p>
+      </figure>
+
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
+          <img src="show4.jpg" alt="校园民乐专场演出">
+        </a>
+        <p class="fig-cap">校园民乐专场演出 · <span>点击查看详情</span></p>
+      </figure>
+    </div>
+
+    <div class="video-block">
+      <p class="table-cap">社团宣传短片（约 5 秒，自动循环播放）</p>
+      <div class="embed-frame">
+        <embed src="club-intro.mp4" type="video/mp4" width="860" height="484" autostart="true" loop="true">
+      </div>
+    </div>
+
+    <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
+  </section>
+
+  <!-- ===== 四、社员故事 ===== -->
+  <section class="section" id="story">
+    <div class="sec-head"><span class="sec-no">四</span><h2>社员故事（节选）</h2><span class="rule"></span></div>
+    <div class="prose">
+      <p>以下三段故事来自社团档案，由社员本人授权整理，姓名做了简化处理。它们不约而同地指向同一件事：学古筝的门槛没有想象中高，难的是坐下来面对自己最初弹得很难听的几分钟。</p>
+    </div>
+
+    <div class="story">
+      <h3>「我原本只是想找个安静的地方待着」</h3>
+      <p class="who">小徐 · 2023 级 材料学院 · 入社两年</p>
+      <p>小徐大一那年几乎没参加过任何社团活动。他说自己属于那种"上完课就回宿舍"的人，不是不喜欢热闹，是不知道怎么加入。招新季他路过琴房，看见门开着，里面有人弹琴，就多站了一会儿，被当时的负责人拉进去坐下，稀里糊涂填了表。</p>
+      <p>第一节课他连指甲都缠不好，胶布缠到手指上太紧，弹了两个音就发麻。他承认那段时间挺挫败的："别人的手像是天生会动，我的手在弦上就是一块木头。"第一学期他只学会了《茉莉花》的前半段，进度排在所有人最后。转机出现在寒假前的一次加练，他一个人在琴房待到快十点，反复弹同一个滑音，忽然发现自己不再需要看着谱子数拍子了——手指记住了。他在档案里写："那一刻很平静，有点像解出一道想了很久的题。"</p>
+      <p>第二年他成了社团里最稳的伴奏声部，负责在合奏里压住节奏。他现在常跟新人说的一句话是："你不需要有天赋，你需要每周来。"</p>
+    </div>
+
+    <div class="story">
+      <h3>「我在台上手抖，但弹完了」</h3>
+      <p class="who">林晚 · 2022 级 文学院 · 现任副社长</p>
+      <p>林晚是那种在课堂上从不举手的人。她加入古筝社的初衷很实际：想要一个"不用说话也能待着"的地方。入社第一年她练得很好，进度排在前面，但一被要求上台就找各种理由推掉。</p>
+      <p>真正把她推上台的是春日雅集。那场活动没有舞台也没有流程，负责人只是把琴搬到草坪上，说"谁想弹谁弹"。她坐在草地上犹豫了二十分钟，最后被旁边的人推了一把。她说自己那天弹的是《渔舟唱晚》的前半段，手一直在抖，中间还错了一个音，"但我把它弹完了"。弹完之后没有掌声，只有几个人抬头看了她一眼，那种"没人特别在意"的反应，反而让她松了一口气。</p>
+      <p>去年六月她第一次站上礼堂的舞台，作为合奏的主旋律声部。她说那次上台前她紧张到想吐，但当她坐下来，手指碰到弦，那些练过几百遍的动作自己就接上了。"那一刻我明白，练习的意义不是让你不紧张，是让你在紧张的时候还能动。"</p>
+    </div>
+
+    <div class="story">
+      <h3>「我们两个人，把一首曲子拆成了四只手」</h3>
+      <p class="who">小陈 &amp; 阿泽 · 2021 级 · 已毕业社员</p>
+      <p>小陈和阿泽是同一届进来的，一个是计算机专业，一个是音乐爱好者但主修物理。两个人都卡在同一首曲子上：《战台风》的摇指段落。摇指需要手腕持续高频摆动，他们练了一个多月还是断断续续。</p>
+      <p>某天晚上两人在琴房耗到十一点，阿泽忽然提议："要不我们一个人摇，一个人按弦，先把它拆开试试？"他们真的这么练了两周：一人负责摇指，一人负责左手按音与滑音，配合着找感觉，然后再各自单独练。后来他们把这套"拆解练法"教给了后来的社员，成为社团内部一个流传下来的土办法。</p>
+      <p>毕业那年，两人在专场演出的最后一首曲子里合作完成了这段摇指。档案里留下的记录只有一句："四年，终于把这段弹完了。"</p>
+    </div>
+
+    <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
+  </section>
+
+  <!-- ===== 五、在线报名表 ===== -->
+  <section class="section" id="form">
+    <div class="sec-head"><span class="sec-no">五</span><h2>古筝社在线报名表</h2><span class="rule"></span></div>
+
+    <form id="signupForm" action="#" method="post">
+      <table class="form-table">
+        <tr>
+          <th><label for="f-name">姓名 <span class="req">*</span></label></th>
+          <td><input type="text" id="f-name" name="name" placeholder="请填写真实姓名" required></td>
+        </tr>
+        <tr>
+          <th>性别 <span class="req">*</span></th>
+          <td>
+            <div class="opt-row">
+              <label class="opt"><input type="radio" name="gender" value="男" required>男</label>
+              <label class="opt"><input type="radio" name="gender" value="女">女</label>
+              <label class="opt"><input type="radio" name="gender" value="不便透露">不便透露</label>
             </div>
-        </div>
-        <div class="banner-right-text">
-            <div class="big-title">
-                弦<br>音<br>雅<br>集
+          </td>
+        </tr>
+        <tr>
+          <th>出生日期 <span class="req">*</span></th>
+          <td>
+            <div class="date-cell">
+              <input type="text" name="birth-year" placeholder="1998" maxlength="4" required><span>年</span>
+              <input type="text" name="birth-month" placeholder="05" maxlength="2" required><span>月</span>
+              <input type="text" name="birth-day" placeholder="12" maxlength="2" required><span>日</span>
             </div>
-        </div>
+          </td>
+        </tr>
+        <tr>
+          <th>手机号 <span class="req">*</span></th>
+          <td><input type="tel" name="phone" placeholder="11 位手机号" maxlength="11" required></td>
+        </tr>
+        <tr>
+          <th>电子邮箱 <span class="req">*</span></th>
+          <td><input type="email" name="email" placeholder="example@mail.com" required></td>
+        </tr>
+        <tr>
+          <th>是否有古筝基础 <span class="req">*</span></th>
+          <td>
+            <div class="opt-row">
+              <label class="opt"><input type="radio" name="level" value="零基础" required>零基础</label>
+              <label class="opt"><input type="radio" name="level" value="自学过一点">自学过一点</label>
+              <label class="opt"><input type="radio" name="level" value="有系统学习经历">有系统学习经历</label>
+              <label class="opt"><input type="radio" name="level" value="已考级">已考级</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>兴趣方向（可多选）</th>
+          <td>
+            <div class="opt-row">
+              <label class="opt"><input type="checkbox" name="interest" value="传统筝曲">传统筝曲</label>
+              <label class="opt"><input type="checkbox" name="interest" value="现代改编">现代改编</label>
+              <label class="opt"><input type="checkbox" name="interest" value="合奏演出">合奏演出</label>
+              <label class="opt"><input type="checkbox" name="interest" value="乐理与视谱">乐理与视谱</label>
+              <label class="opt"><input type="checkbox" name="interest" value="活动策划">活动策划</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th><label for="f-grade">年级 <span class="req">*</span></label></th>
+          <td>
+            <select id="f-grade" name="grade" required>
+              <option value="" selected>请选择你的年级</option>
+              <option value="大一">大一</option>
+              <option value="大二">大二</option>
+              <option value="大三">大三</option>
+              <option value="大四">大四</option>
+              <option value="研究生">研究生</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th><label for="f-intro">自我介绍 <span class="req">*</span></label></th>
+          <td><textarea id="f-intro" name="intro" rows="5" placeholder="请简单介绍自己、以及加入古筝社的理由……" required></textarea></td>
+        </tr>
+        <tr>
+          <th>是否服从活动安排 <span class="req">*</span></th>
+          <td>
+            <div class="opt-row">
+              <label class="opt"><input type="radio" name="follow" value="是，可以按安排参加" required>是，可以按安排参加</label>
+              <label class="opt"><input type="radio" name="follow" value="部分时段需协商">部分时段需协商</label>
+              <label class="opt"><input type="radio" name="follow" value="暂时无法确定">暂时无法确定</label>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="btn-row">
+            <button class="btn primary" type="submit">提交报名</button>
+            <button class="btn" type="reset">重置表单</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <div class="note">
+      <b>提交说明：</b>本表单为静态页面演示，提交后不会真正发送数据。正式招新期间，请将填写内容发送至社团邮箱 guzheng.club@campus.edu，或在招新摊位现场登记。
     </div>
 
-    <!-- 古画轮播板块，对标典藏书画 -->
-    <h2 class="section-title">筝韵雅画</h2>
-    <div class="scroll-wrap">
-        <span class="arrow">◀</span>
-        <div class="pic-row">
-            <img class="pic-item" src="show.jpg" alt="古筝演出">
-            <img class="pic-item" src="show.jpg" alt="社员练琴">
-            <img class="pic-item" src="show.jpg" alt="合奏排练">
-            <img class="pic-item" src="show.jpg" alt="舞台演出">
-            <img class="pic-item" src="show.jpg" alt="雅集活动">
-        </div>
-        <span class="arrow">▶</span>
-    </div>
-    <img class="long-pic" src="banner.jpg" alt="古风长卷">
+    <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
+  </section>
 
-    <!-- 正文内容区 -->
-    <div class="content-container">
-        <div id="intro" class="block">
-            <h2>一、古筝社简介</h2>
-            <p>校园古筝社是校园特色传统文化文艺社团。社团以古筝为载体，开展琴艺练习、古典乐曲研习、民乐汇演等各类活动，为喜爱传统民乐的同学搭建交流与展示自我的雅集平台。</p>
-            <br>
-            <p>无论你是从未触碰琴弦的零基础新人，还是已经可以熟练弹奏曲目的爱好者，只要心怀对古筝、传统民乐的热爱，都欢迎加入古筝社。社团由经验丰富的老社员开展帮带教学，从手型指法、基础乐理、经典古曲到现代改编曲目，循序渐进带领大家提升琴艺。</p>
-            <br>
-            <p>社团日常活动地点设于学生活动中心民乐教室，每周设置固定练琴时段，同时会为校园文艺演出、民乐比赛组织排练，感受丝弦之间的国风魅力。</p>
-        </div>
+</main>
 
-        <div id="activity" class="block">
-            <h2>二、本学期主要活动安排</h2>
-            <p>以下为本学期古筝社规划活动，时间会根据学校通知微调，请留意社团群通知。</p>
-            <table>
-                <tr>
-                    <th colspan="4">古筝社 2026学年活动安排表</th>
-                </tr>
-                <tr>
-                    <th>活动名称</th>
-                    <th>活动时间</th>
-                    <th>活动地点</th>
-                    <th>负责人</th>
-                </tr>
-                <tr>
-                    <td>新社员雅集见面会</td>
-                    <td>9月第2周 周五晚</td>
-                    <td>学生活动中心民乐教室302</td>
-                    <td>林晚</td>
-                </tr>
-                <tr>
-                    <td>古筝基础公益公开课</td>
-                    <td>9月第3周 周六下午</td>
-                    <td>学生活动中心民乐教室302</td>
-                    <td>苏清月</td>
-                </tr>
-                <tr>
-                    <td>校园国风民乐游园汇演</td>
-                    <td>10月第2周 周日</td>
-                    <td>校园湖心亭广场</td>
-                    <td>陈梓涵</td>
-                </tr>
-                <tr>
-                    <td>年末弦音专场演奏会</td>
-                    <td>12月第1周 周六晚</td>
-                    <td>大学生活动中心大礼堂</td>
-                    <td>周曼</td>
-                </tr>
-            </table>
-        </div>
+<footer>
+  <b>校园古筝社团 2026 招新页面</b>
+  弦音雅集 · 每周四 19:00 学生活动中心民乐教室 302
+</footer>
 
-        <div id="show" class="block">
-            <h2>三、古筝社风采展示</h2>
-            <p>这里记录社员排练、登台演出、雅集交流的瞬间，指尖流转古韵，琴声赴一场相逢。</p>
-        </div>
+<script>
+(function(){
+  // 音乐播放/暂停
+  var btn = document.getElementById('playBtn');
+  var music = document.getElementById('bgMusic');
+  var iPlay = document.getElementById('iconPlay');
+  var iPause = document.getElementById('iconPause');
 
-        <div id="story" class="block">
-            <h2>四、社团故事</h2>
-            <p>很多社员说，加入古筝社收获的不只是弹奏的技艺，更是一群志同道合的伙伴。大家一起品读古曲、交流演奏心得，一同排练登台，在课业之外，拥有一份国风雅趣的温暖陪伴。</p>
-        </div>
+  btn.addEventListener('click', function(){
+    if (music.paused) {
+      var p = music.play();
+      if (p && typeof p.catch === 'function') { p.catch(function(){}); }
+      iPlay.style.display = 'none';
+      iPause.style.display = 'block';
+    } else {
+      music.pause();
+      iPlay.style.display = 'block';
+      iPause.style.display = 'none';
+    }
+  });
 
-        <div id="form" class="block">
-            <h2>五、在线报名表</h2>
-            <form>
-                <div class="form-item">
-                    <label>姓名：</label><br>
-                    <input type="text" placeholder="请输入你的姓名">
-                </div>
-                <div class="form-item">
-                    <label>年级专业：</label><br>
-                    <input type="text" placeholder="例如：2025级计算机">
-                </div>
-                <div class="form-item">
-                    <label>联系方式：</label><br>
-                    <input type="text" placeholder="QQ号/微信号">
-                </div>
-                <div class="form-item">
-                    <label>古筝基础：</label><br>
-                    <input type="text" placeholder="零基础 / 有基础，简单说明">
-                </div>
-                <div class="form-item">
-                    <label>想说的话：</label><br>
-                    <textarea rows="4" placeholder="简单写一下你为什么想加入古筝社"></textarea>
-                </div>
-                <button type="submit">提交报名</button>
-            </form>
-        </div>
-    </div>
+  music.addEventListener('pause', function(){
+    iPlay.style.display = 'block';
+    iPause.style.display = 'none';
+  });
+  music.addEventListener('play', function(){
+    iPlay.style.display = 'none';
+    iPause.style.display = 'block';
+  });
 
-    <footer>
-        <p>开馆信息 / 参观指南 / 友情链接 | 校园古筝社 · 弦音雅集</p>
-        <p>©2026 校园古筝社 版权所有</p>
-    </footer>
+  // 社团简介折叠/展开
+  var toggleBtn = document.getElementById('toggleIntro');
+  var introBody = document.getElementById('introBody');
+
+  toggleBtn.addEventListener('click', function(){
+    if (introBody.classList.contains('is-open')) {
+      introBody.classList.remove('is-open');
+      toggleBtn.textContent = '展开全文 ↓';
+    } else {
+      introBody.classList.add('is-open');
+      toggleBtn.textContent = '收起 ↑';
+    }
+  });
+
+  // 表单提交演示
+  var form = document.getElementById('signupForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    alert('表单已填写完成（本页面为静态演示，数据不会真实提交）。\n正式报名请将信息发送至社团邮箱 guzheng.club@campus.edu。');
+  });
+})();
+</script>
+
 </body>
 </html>
