@@ -17,19 +17,47 @@
             color: #1f3450;
             max-width: 1100px;
             margin: 0 auto;
-            padding-top: 110px;
+            padding-top: 140px;
             padding-left:24px;
             padding-right:24px;
             padding-bottom:30px;
             line-height: 1.8;
         }
 
-        /* ========== 音乐按钮+logo：放在导航栏上方 ========== */
+        /* ========== 固定顶部导航栏【位置不动，top:0】 ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width:100%;
+            z-index:998;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid #b9d8f5;
+            padding:12px 10px;
+            box-shadow: 0 3px 12px rgba(52, 142, 224, 0.15);
+        }
+
+        .nav a {
+            color: #256bbf;
+            font-size: 17px;
+            font-weight: bold;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: #0f4a8f;
+            text-decoration: underline;
+        }
+
+        /* ==========左上角音乐按钮+圆形社团logo【导航栏下方，导航栏位置不变】========== */
         .top-audio {
             position: fixed;
-            top:8px;
-            left:14px;
-            z-index: 10000;
+            top: 58px;
+            left: 14px;
+            z-index: 9999;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -70,34 +98,6 @@
         #clubLogo:hover {
             transform: translateY(-4px) scale(1.08);
             box-shadow: 0 8px 20px rgba(37, 107, 191, 0.45);
-        }
-
-        /* ========== 固定顶部导航栏 ========== */
-        .nav {
-            position: fixed;
-            top:52px;
-            left: 0;
-            width:100%;
-            z-index:998;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            border-bottom: 1px solid #b9d8f5;
-            padding:12px 10px;
-            box-shadow: 0 3px 12px rgba(52, 142, 224, 0.15);
-        }
-
-        .nav a {
-            color: #256bbf;
-            font-size: 17px;
-            font-weight: bold;
-            margin: 0 10px;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .nav a:hover {
-            color: #0f4a8f;
-            text-decoration: underline;
         }
 
         /* ==========头版标题横幅图片========== */
@@ -252,7 +252,16 @@
     </style>
 </head>
 <body id="top">
-    <!-- 【在导航栏上方】左上角音乐播放暂停 + 圆形社团logo -->
+    <!-- ==========固定导航栏【保持在页面最顶端，位置不动】========== -->
+    <div class="nav">
+        <a href="#intro">社团简介</a> |
+        <a href="#activity">活动安排</a> |
+        <a href="#show">风采展示</a> |
+        <a href="#story">社员故事</a> |
+        <a href="#apply">在线报名</a>
+    </div>
+
+    <!-- 左上角音乐播放暂停 + 圆形社团logo 【导航栏下方】 -->
     <div class="top-audio">
         <audio id="bgAudio" src="bg.mp3" loop>
         <button id="musicBtn" onclick="toggleMusic()">
@@ -260,15 +269,6 @@
             <span id="musicText">播放音乐</span>
         </button>
         <img id="clubLogo" src="logo.jpg" alt="打击乐社标志">
-    </div>
-
-    <!-- ==========固定导航栏========== -->
-    <div class="nav">
-        <a href="#intro">社团简介</a> |
-        <a href="#activity">活动安排</a> |
-        <a href="#show">风采展示</a> |
-        <a href="#story">社员故事</a> |
-        <a href="#apply">在线报名</a>
     </div>
 
     <!-- 头版横幅 -->
