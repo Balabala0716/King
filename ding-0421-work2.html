@@ -152,21 +152,13 @@ table.schedule tr+tr:hover td{background:rgba(236,227,209,.28)}
 .room{color:var(--jade);font-size:13px}
 .table-cap{font-size:12.5px;color:#7b7160;letter-spacing:.04em;margin-bottom:2px}
 
-/* ===== 风采：左右轮播 【修改重点】 ===== */
-.slider-wrap{position:relative;margin:20px 0 8px;overflow:hidden;border:1px solid #b7a98c;background:#e8dfcc}
-.slider-track{display:flex;transition:transform 0.4s ease}
-.slide{flex:0 0 100%}
-.slide img{width:100%;height:420px;object-fit:cover;display:block}
-.slider-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:42px;height:42px;border-radius:50%;
-  border:1px solid var(--paper);background:rgba(30,28,24,0.45);color:#fff;
-  font-size:20px;cursor:pointer;z-index:2;
-}
-.slider-btn:hover{background:rgba(30,28,24,0.7)}
-.prev{left:12px}
-.next{right:12px}
-.fig-cap{font-size:12.5px;color:#7b7160;margin-top:8px;letter-spacing:.04em;text-align:center}
+/* ===== 风采：四张图 ===== */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 8px}
+.figure{margin:0}
+.figure a{display:block;position:relative;overflow:hidden;border:1px solid #b7a98c;background:#e8dfcc}
+.figure img{display:block;width:100%;height:220px;object-fit:cover;transition:transform .5s ease,filter .5s ease}
+.figure a:hover img{transform:scale(1.03);filter:saturate(1.08)}
+.fig-cap{font-size:12.5px;color:#7b7160;margin-top:8px;letter-spacing:.04em}
 .fig-cap span{color:var(--cinnabar)}
 
 .video-block{margin:22px 0 4px}
@@ -238,7 +230,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   .sec-head h2{font-size:27px}
   .prose p{margin-bottom:16px}
   table.form-table th{width:170px}
-  .slide img{height:460px}
+  .figure img{height:260px}
 }
 @media (max-width:420px){
   .play-hint{display:none}
@@ -247,7 +239,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   .hero-title{font-size:34px}
   table.form-table th{width:96px;font-size:12.5px;padding:8px}
   table.form-table td{padding:8px}
-  .slide img{height:260px}
+  .gallery{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -274,9 +266,9 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   </nav>
 </header>
 
-<audio id="bgMusic" src="theme.mp3" preload="auto" loop>
+<audio id="bgMusic" src="theme.mp3" preload="auto" loop></audio>
 
-<!-- ===== 首屏：顶部背景图 直接替换hero-banner.jpg文件就能换背景 ===== -->
+<!-- ===== 首屏：顶部背景图 ===== -->
 <section class="hero">
   <div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
   <div class="hero-inner">
@@ -327,7 +319,7 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
       <p class="table-cap">古筝社 2026 年春季学期活动安排表</p>
       <table class="schedule">
         <tr>
-          <th colspan="4">古筝社 2026 春季学期活动安排表</th>
+          <th colspan="4">古筝社 2026 年春季学期活动安排表</th>
         </tr>
         <tr>
           <th>活动名称</th>
@@ -376,34 +368,41 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
     <div class="back-top-row"><a class="back-top" href="#top">↑ 一键返回顶部</a></div>
   </section>
 
-  <!-- ===== 三、风采展示：左右切换轮播【已改】 ===== -->
+  <!-- ===== 三、风采展示：四张图 ===== -->
   <section class="section" id="show">
     <div class="sec-head"><span class="sec-no">三</span><h2>社团风采展示</h2><span class="rule"></span></div>
     <div class="prose">
-      <p>下面四张照片记录了古筝社上学期的日常练琴、春日雅集、合奏排练与专场演出，点击左右箭头切换图片。</p>
+      <p>下面四张照片记录了古筝社上学期的日常练琴、春日雅集、合奏排练与专场演出。点击任意图片可进入活动介绍页，查看当时的排练细节与社员笔记。</p>
     </div>
 
-    <div class="slider-wrap">
-      <button class="slider-btn prev">&lt;</button>
-      <div class="slider-track">
-        <div class="slide">
+    <div class="gallery">
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
           <img src="show1.jpg" alt="古筝社日常练琴">
-          <p class="fig-cap">周四晚练琴现场 · <span>日常练习</span></p>
-        </div>
-        <div class="slide">
+        </a>
+        <p class="fig-cap">周四晚练琴现场 · <span>点击查看详情</span></p>
+      </figure>
+
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
           <img src="show2.jpg" alt="春日雅集活动">
-          <p class="fig-cap">春日雅集草坪演奏 · <span>户外雅集</span></p>
-        </div>
-        <div class="slide">
+        </a>
+        <p class="fig-cap">春日雅集草坪演奏 · <span>点击查看详情</span></p>
+      </figure>
+
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
           <img src="show3.jpg" alt="合奏排练">
-          <p class="fig-cap">分声部合奏排练 · <span>合奏排练</span></p>
-        </div>
-        <div class="slide">
+        </a>
+        <p class="fig-cap">分声部合奏排练 · <span>点击查看详情</span></p>
+      </figure>
+
+      <figure class="figure">
+        <a href="club_intro.html" title="点击查看活动介绍">
           <img src="show4.jpg" alt="校园民乐专场演出">
-          <p class="fig-cap">校园民乐专场演出 · <span>舞台演出</span></p>
-        </div>
-      </div>
-      <button class="slider-btn next">&gt;</button>
+        </a>
+        <p class="fig-cap">校园民乐专场演出 · <span>点击查看详情</span></p>
+      </figure>
     </div>
 
     <div class="video-block">
@@ -605,25 +604,6 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
     }
   });
 
-  // ===== 风采轮播JS（左右切换）=====
-  const track = document.querySelector('.slider-track');
-  const prevBtn = document.querySelector('.prev');
-  const nextBtn = document.querySelector('.next');
-  const slideCount = document.querySelectorAll('.slide').length;
-  let index = 0;
-
-  function updateSlider(){
-    track.style.transform = `translateX(-${index * 100}%)`;
-  }
-  prevBtn.onclick = ()=>{
-    index = index <= 0 ? slideCount - 1 : index - 1;
-    updateSlider();
-  }
-  nextBtn.onclick = ()=>{
-    index = index >= slideCount -1 ? 0 : index +1;
-    updateSlider();
-  }
-
   // 表单提交演示
   var form = document.getElementById('signupForm');
   form.addEventListener('submit', function(e){
@@ -632,5 +612,6 @@ footer b{display:block;font-weight:400;color:var(--ink-soft);margin-bottom:6px}
   });
 })();
 </script>
+
 </body>
 </html>
