@@ -1,0 +1,265 @@
+<html>
+<head>
+<style>
+	body {
+		background-color: #d7f0e6;
+		padding: 28px;
+		font-family: "Microsoft YaHei", "SimSun", sans-serif;
+		color: #3a4a44;
+	}
+
+	/* .page 样式：除 background-color 外，其余属性不允许修改 */
+	.page {
+		display: inline-block;
+		background-color: #E8FFF4;
+		box-shadow: 0 0 30px rgba(80, 58, 35, 0.25);
+		text-align: left;
+		max-width: 720px;
+	}
+
+	/* ③ 并集选择器：所有标题统一配色 */
+	h1, h2, h3, h4, h5, h6 {
+		color: #2c5f4f;
+		letter-spacing: 1px;
+	}
+
+	h1 {
+		font-size: 30px;
+		text-align: center;
+		margin: 30px 24px 6px 24px;
+		letter-spacing: 2px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #9fc9b6;
+	}
+
+	h5 {
+		font-size: 14px;
+		font-weight: normal;
+		color: #6b9b88;
+		margin: 4px 24px 10px 24px;
+	}
+
+	h4 {
+		font-size: 14px;
+		font-weight: normal;
+		text-align: center;
+		color: #6b9b88;
+		margin: 0 24px 18px 24px;
+	}
+
+	h2 {
+		font-size: 20px;
+		margin: 22px 24px 10px 24px;
+		padding-left: 10px;
+		border-left: 4px solid #2c5f4f;
+	}
+
+	h3 {
+		font-size: 18px;
+		margin: 22px 24px 10px 24px;
+		padding-left: 10px;
+		border-left: 4px solid #7cbfa4;
+	}
+
+	div {
+		padding: 0 20px;
+	}
+
+	p {
+		line-height: 1.9;
+		font-size: 15px;
+		color: #3a4a44;
+		margin: 8px 4px;
+	}
+
+	/* ④ ID 选择器：重要提示放大、加粗、特殊颜色 */
+	p#intro {
+		font-size: 16px;
+		font-weight: bold;
+		color: #a93226;
+		background-color: #fdecea;
+		border-left: 4px solid #c0392b;
+		padding: 12px 16px;
+		margin: 14px 4px;
+		border-radius: 6px;
+	}
+
+	/* 提示段首字与整段保持同色 */
+	p#intro::first-letter {
+		color: #a93226;
+	}
+
+	/* ① 后代选择器：仅当 div 里的 table 内存在超级链接时触发 */
+	div table a {
+		color: #8e6f3f;
+		text-decoration: underline;
+		font-weight: bold;
+	}
+
+	/* ② 链接伪类 */
+	a:link {
+		color: #3a7d63;
+	}
+	a:visited {
+		color: #7a6a99;
+	}
+	a:hover {
+		color: #1f4d3d;
+	}
+	a:active {
+		color: #c0392b;
+	}
+
+	/* ⑤ 带类名的链接 */
+	a.red {
+		color: #d9534f;
+		font-weight: bold;
+		display: inline-block;
+		padding: 7px 16px;
+		margin: 6px 0;
+		background-color: #fdf0ef;
+		border: 1px solid #e6a09e;
+		border-radius: 16px;
+	}
+	a.blue {
+		color: #337ab7;
+		font-weight: bold;
+		display: inline-block;
+		padding: 7px 16px;
+		margin: 6px 0;
+		background-color: #eef4fb;
+		border: 1px solid #a9c8e8;
+		border-radius: 16px;
+	}
+
+	/* ⑥ 伪元素 */
+	p::first-letter {
+		font-size: 22px;
+		font-weight: bold;
+		color: #2c5f4f;
+	}
+	div::first-line {
+		letter-spacing: 1px;
+	}
+
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		margin: 10px 0 22px 0;
+	}
+
+	th, td {
+		border: 1px solid #bfe0d2;
+		padding: 9px 8px;
+		font-size: 14px;
+		text-align: center;
+	}
+
+	th {
+		background-color: #cdeedd;
+		color: #245445;
+		font-size: 14px;
+	}
+
+	td {
+		color: #3a4a44;
+	}
+
+	tr:hover td {
+		background-color: #eef9f3;
+	}
+
+	.notice {
+		margin: 22px 0 26px 0;
+		padding: 16px 20px;
+		background-color: #f3fdf8;
+		border-left: 4px solid #2c5f4f;
+		border-radius: 0 8px 8px 0;
+		line-height: 2;
+		font-size: 14px;
+		color: #44554e;
+	}
+</style>
+</head>
+<body>
+<div class=page>
+
+	<!-- ① 顶部标题区 -->
+	<div>
+		<h1>静夜灯下分享会 · Night Lamp Sharing</h1>
+		<h4>—— 枕星鼓社 · 周末节奏雅集 ——</h4>
+	</div>
+
+	<!-- ② 活动介绍区 -->
+	<div>
+		<h2 id="intro">活动介绍</h2>
+		<p>枕星鼓社诚邀各位同学参加本周末举办的“静夜灯下分享会”。夜幕落下之后，排练室里会亮起一盏盏暖黄的小灯，鼓面润好，鼓槌备齐，大家围坐在鼓架与矮凳之间，轮流敲打自己近期练习的鼓曲与节奏片段，也可以聊聊练鼓时遇到的困惑、打动自己的节拍，或是一段与打击乐有关的心事。</p>
+		<p>分享会不设严格的演出顺序，也不要求完整背谱。你可以带来练到一半的片段，节奏打错了一笑而过；也可以只安静地听，在曲与曲之间说说自己的感受。老社员会在一旁帮忙校准鼓面、示范持槌姿势与基本节奏型，让初次接触打击乐的同学也能鼓起勇气试上一小段。</p>
+		<p>现场备有温水、茶水与纸质节奏谱册，墙边摆放着常供借用的备用鼓、鼓槌与小钹。活动氛围轻松热烈又不失安静，灯光调得柔和，时间在鼓点里过得很快，适合在忙碌的课业之外，留一个晚上给自己。</p>
+		<p>社团日常排演以民族鼓、小军鼓、排鼓与手鼓为主，也会在节庆活动中尝试鼓与竹笛、琵琶等民乐的搭配。无论你是想从零学起，还是已有节奏基础、希望找到同好一起排练，都可以在分享会上认识我们。</p>
+		<p id="intro">重要提示：本次分享会席位有限，报名成功后以短信确认为准，请务必留下可联系的手机号；请提前十分钟到场，活动开始后请勿随意走动，演奏过程中请保持安静，结束后再给予掌声与交流。</p>
+	</div>
+
+	<!-- ③ 活动报名信息表格区 -->
+	<div>
+		<h3>本期分享会安排一览</h3>
+		<h5>本期共设四场分享，可按场次主题自由参加，无需全程留守。</h5>
+		<table>
+			<tr>
+				<th>场次</th>
+				<th>分享主题</th>
+				<th>时间</th>
+				<th>主讲人</th>
+				<th>曲目详情</th>
+			</tr>
+			<tr>
+				<td>第一期</td>
+				<td>民族鼓曲赏析与持槌入门姿势</td>
+				<td>周六 19:00</td>
+				<td>林晚</td>
+				<td><a href="#">查看曲目介绍</a></td>
+			</tr>
+			<tr>
+				<td>第二期</td>
+				<td>小军鼓基本功与节奏型练习</td>
+				<td>周六 20:00</td>
+				<td>陈屿</td>
+				<td><a href="#">查看曲目介绍</a></td>
+			</tr>
+			<tr>
+				<td>第三期</td>
+				<td>排鼓与手鼓节奏配合练习</td>
+				<td>周日 19:00</td>
+				<td>苏念</td>
+				<td><a href="#">查看曲目介绍</a></td>
+			</tr>
+			<tr>
+				<td>第四期</td>
+				<td>校园打击乐合奏排练与经验交流</td>
+				<td>周日 20:00</td>
+				<td>社团全体</td>
+				<td><a href="#">查看曲目介绍</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- ④ 页面链接区 -->
+	<div>
+		<p>更多往期记录与咨询入口见下方链接：</p>
+		<div>
+			<a class="red" href="https://hongchenwusdnu.github.io/bookstore/job4.html">查看往期活动照片</a>
+			<br><br>
+			<a class="blue" href="https://balabala0716.github.io/King/ding-0421-work2.html">在线咨询活动详情</a>
+		</div>
+	</div>
+
+	<!-- ⑤ 底部公告区 -->
+	<div class="notice">
+		公告一：分享会地点为大学生活动中心二楼 203 打击乐排练室，地铁二号线“文艺路站”A 口出后步行五分钟即到；雨天路滑，请带好雨具，提前出门。<br>
+		公告二：活动当日请将手机调至静音，拍摄照片时请关闭闪光灯，避免打扰正在演奏的同学；未经允许，请勿将现场演奏录音外传。<br>
+		公告三：有意向报名打击乐课程的同学，可在活动结束后到前台登记，社团将在一周内安排试听与分班；日常排练时间为每周三、周五晚七点，社团招新报名表也可在现场领取。
+	</div>
+
+</div>
+</body>
+</html>
